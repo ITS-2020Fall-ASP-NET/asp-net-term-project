@@ -1,3 +1,6 @@
 AspNetTeam_Prj/bin
 AspNetTeam_Prj/obj
 
+.vs/ITS2020_ASPNET_Team_Prj/config/applicationhost.config
+.vs/ITS2020_ASPNET_Team_Prj/v16/.suo
+Database/obj/Debug/Database.sqlprojAssemblyReference.cache
