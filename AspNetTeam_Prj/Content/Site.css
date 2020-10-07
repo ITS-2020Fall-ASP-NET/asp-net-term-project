@@ -4,7 +4,6 @@
 }
 
 body {
-    padding-top: 60px;
     padding-bottom: 20px;
 }
 
@@ -30,7 +29,6 @@ textarea {
 
 .navbar {
     width: 100%;
-    position: fixed;
     top: 0;
     left: 0;
     background: white;
@@ -45,6 +43,7 @@ textarea {
     width: 1024px;
     height: 640px;
     background-color: #FBF7F2;
+    margin-top: 55px;
 }
 
 .home-main-content {
