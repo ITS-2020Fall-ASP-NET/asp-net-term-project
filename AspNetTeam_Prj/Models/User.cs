@@ -12,28 +12,28 @@ namespace AspNetTeam_Prj.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Item
+    public partial class User
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Item()
+        public User()
         {
-            this.Comments = new HashSet<Comment>();
+            this.Items = new HashSet<Item>();
             this.Transactions = new HashSet<Transaction>();
+            this.Transactions1 = new HashSet<Transaction>();
         }
     
-        public int item_id { get; set; }
-        public Nullable<int> user_id { get; set; }
-        public string name { get; set; }
-        public Nullable<decimal> listing_price { get; set; }
-        public string description { get; set; }
-        public Nullable<int> category { get; set; }
-        public string like_count { get; set; }
+        public int user_id { get; set; }
+        public string fname { get; set; }
+        public string lname { get; set; }
+        public string passwd { get; set; }
+        public string email { get; set; }
+        public Nullable<decimal> reputation { get; set; }
     
-        public virtual Category Category1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Comment> Comments { get; set; }
-        public virtual User User { get; set; }
+        public virtual ICollection<Item> Items { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Transaction> Transactions { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Transaction> Transactions1 { get; set; }
     }
 }

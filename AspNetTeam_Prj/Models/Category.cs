@@ -12,28 +12,18 @@ namespace AspNetTeam_Prj.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Item
+    public partial class Category
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Item()
+        public Category()
         {
-            this.Comments = new HashSet<Comment>();
-            this.Transactions = new HashSet<Transaction>();
+            this.Items = new HashSet<Item>();
         }
     
-        public int item_id { get; set; }
-        public Nullable<int> user_id { get; set; }
+        public int category_id { get; set; }
         public string name { get; set; }
-        public Nullable<decimal> listing_price { get; set; }
-        public string description { get; set; }
-        public Nullable<int> category { get; set; }
-        public string like_count { get; set; }
     
-        public virtual Category Category1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Comment> Comments { get; set; }
-        public virtual User User { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Transaction> Transactions { get; set; }
+        public virtual ICollection<Item> Items { get; set; }
     }
 }
