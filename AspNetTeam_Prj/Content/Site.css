@@ -1,5 +1,10 @@
-﻿body {
-    padding-top: 50px;
+﻿* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    padding-top: 60px;
     padding-bottom: 20px;
 }
 
@@ -21,4 +26,47 @@ input,
 select,
 textarea {
     max-width: 280px;
+}
+
+.navbar {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: white;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+#search-box {
+    width: 400px;
+}
+
+.home-main-top {
+    width: 1024px;
+    height: 640px;
+    background-color: #FBF7F2;
+}
+
+.home-main-content {
+    width: 1024px;
+    height: 640px;
+    background-color: #FFFFFF;
+}
+
+.home-second-content {
+    width: 1024px;
+    height: 640px;
+    background-color: #FBF7F2;
+}
+
+#home-main-section-top {
+    background-color: #FBF7F2;
+}
+
+.home-section {
+    margin: 0;
+}
+
+.home-second-section {
+    background-color: #FBF7F2;
 }
