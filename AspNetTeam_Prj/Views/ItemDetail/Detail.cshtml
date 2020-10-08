@@ -1,0 +1,23 @@
+﻿@model AspNetTeam_Prj.Models.Item
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var item_id = Model.item_id;
+    var count = Model.like_count;
+}
+<h2>Detail</h2>
+<div>
+    @Html.DisplayFor(model => model)
+@Html.ActionLink("Like", "Like", new
+{
+    id = item_id,
+    user_id = 1,
+    count = count
+})
+</div>
+@section scripts {
+    <script>
+        var ShowAlreadyLikedModal = @Html.Raw(Json.Encode(ViewBag.ShowAlreadyLikedModal));
+        if (ShowAlreadyLikedModal == true) alert('You already liked this item');
+    </script>
+}
