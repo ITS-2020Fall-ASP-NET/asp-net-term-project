@@ -22,7 +22,6 @@ VALUES (user_id, fname, lname, passwd, email, reputation);
 
 
 /* Categories */
-
 MERGE INTO [dbo].[Category] AS Target
 USING (VALUES 
         (0, 'Baby'),

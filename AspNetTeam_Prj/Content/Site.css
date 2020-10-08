@@ -35,6 +35,9 @@ textarea {
     background: white;
     border-bottom: 1px solid rgba(0, 0, 0, 0.04);
 }
+#nav-container {
+    justify-content: center;
+}
 
 #search-box {
     width: 400px;
