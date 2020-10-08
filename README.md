@@ -2,10 +2,10 @@
 [Confluence Page](https://1souljo.atlassian.net/wiki/spaces/ITS2020FAL/pages/225312769/Second-hand+market+with+advanced+features)
 
 # Description
-Community based Kijiji-like second-hand market service.
-Focus on ‘nearby’ oriented service to give users a more neighboring and secured feel.
-So it should support a more specific address-based search.
-Kijiji’s minimum address unit is ‘City’ (i.e. Toronto, Mississauga, Oakville), but we can support the search where users can set the current location and find the result from the closest.
+Community based Kijiji-like second-hand market service.  
+Focus on ‘nearby’ oriented service to give users a more neighboring and secured feel.  
+So it should support a more specific address-based search.  
+Kijiji’s minimum address unit is ‘City’ (i.e. Toronto, Mississauga, Oakville), but we can support the search where users can set the current location and find the result from the closest.  
 In addition to it, add some useful features to provide users with better transaction experience.
 
 # Features
