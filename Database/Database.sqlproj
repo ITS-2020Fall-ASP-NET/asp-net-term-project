@@ -14,7 +14,7 @@
     <RootNamespace>Database</RootNamespace>
     <AssemblyName>Database</AssemblyName>
     <ModelCollation>1033, CI</ModelCollation>
-    <DefaultFileStructure>BySchemaAndSchemaType</DefaultFileStructure>
+    <DefaultFileStructure>Undefined</DefaultFileStructure>
     <DeployToDatabase>True</DeployToDatabase>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <TargetLanguage>CS</TargetLanguage>
@@ -66,6 +66,7 @@
     <Build Include="Address.sql" />
     <Build Include="CityLookup.sql" />
     <Build Include="StateLookup.sql" />
+    <Build Include="like.sql" />
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="Script.PostDeployment1.sql" />

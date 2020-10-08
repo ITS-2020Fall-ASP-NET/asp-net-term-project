@@ -53,6 +53,14 @@
           <Property Name="category" Type="int" />
           <Property Name="like_count" Type="nchar" MaxLength="10" />
         </EntityType>
+        <EntityType Name="like">
+          <Key>
+            <PropertyRef Name="like_id" />
+          </Key>
+          <Property Name="like_id" Type="int" Nullable="false" />
+          <Property Name="user_id" Type="int" Nullable="false" />
+          <Property Name="item_id" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="StateLookup">
           <Key>
             <PropertyRef Name="state_id" />
@@ -84,7 +92,7 @@
           <Property Name="reputation" Type="decimal" Precision="18" Scale="0" />
           <Property Name="address" Type="int" />
         </EntityType>
-        <Association Name="FK__Comment__item_id__2E1BDC42">
+        <Association Name="FK__Comment__item_id__5CD6CB2B">
           <End Role="Item" Type="Self.Item" Multiplicity="0..1" />
           <End Role="Comment" Type="Self.Comment" Multiplicity="*" />
           <ReferentialConstraint>
@@ -96,7 +104,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Item__category__31EC6D26">
+        <Association Name="FK__Item__category__5EBF139D">
           <End Role="Category" Type="Self.Category" Multiplicity="0..1" />
           <End Role="Item" Type="Self.Item" Multiplicity="*" />
           <ReferentialConstraint>
@@ -108,7 +116,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Item__user_id__36B12243">
+        <Association Name="FK__Item__user_id__5DCAEF64">
           <End Role="User" Type="Self.User" Multiplicity="0..1" />
           <End Role="Item" Type="Self.Item" Multiplicity="*" />
           <ReferentialConstraint>
@@ -204,24 +212,37 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="user_id">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="like" Type="Self.like" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="user_id" />
+            </Principal>
+            <Dependent Role="like">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="DatabaseModelStoreContainer">
           <EntitySet Name="Address" EntityType="Self.Address" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CityLookup" EntityType="Self.CityLookup" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Comment" EntityType="Self.Comment" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Item" EntityType="Self.Item" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="like" EntityType="Self.like" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="StateLookup" EntityType="Self.StateLookup" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Transaction" EntityType="Self.Transaction" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__Comment__item_id__2E1BDC42" Association="Self.FK__Comment__item_id__2E1BDC42">
+          <AssociationSet Name="FK__Comment__item_id__5CD6CB2B" Association="Self.FK__Comment__item_id__5CD6CB2B">
             <End Role="Item" EntitySet="Item" />
             <End Role="Comment" EntitySet="Comment" />
           </AssociationSet>
-          <AssociationSet Name="FK__Item__category__31EC6D26" Association="Self.FK__Item__category__31EC6D26">
+          <AssociationSet Name="FK__Item__category__5EBF139D" Association="Self.FK__Item__category__5EBF139D">
             <End Role="Category" EntitySet="Category" />
             <End Role="Item" EntitySet="Item" />
           </AssociationSet>
-          <AssociationSet Name="FK__Item__user_id__36B12243" Association="Self.FK__Item__user_id__36B12243">
+          <AssociationSet Name="FK__Item__user_id__5DCAEF64" Association="Self.FK__Item__user_id__5DCAEF64">
             <End Role="User" EntitySet="User" />
             <End Role="Item" EntitySet="Item" />
           </AssociationSet>
@@ -252,6 +273,10 @@
           <AssociationSet Name="FK_User_Address" Association="Self.FK_User_Address">
             <End Role="Address" EntitySet="Address" />
             <End Role="User" EntitySet="User" />
+          </AssociationSet>
+          <AssociationSet Name="user_id" Association="Self.user_id">
+            <End Role="User" EntitySet="User" />
+            <End Role="like" EntitySet="like" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -321,6 +346,7 @@
           <NavigationProperty Name="Transactions1" Relationship="Self.FK_Transaction_Seller" FromRole="User" ToRole="Transaction" />
           <Property Name="address" Type="Int32" />
           <NavigationProperty Name="Address1" Relationship="DatabaseModel.FK_User_Address" FromRole="User" ToRole="Address" />
+          <NavigationProperty Name="likes" Relationship="DatabaseModel.user_id" FromRole="User" ToRole="like" />
         </EntityType>
         <Association Name="FK__Item__category__31EC6D26">
           <End Role="Category" Type="Self.Category" Multiplicity="0..1" />
@@ -443,6 +469,11 @@
             <End Role="StateLookup" EntitySet="StateLookups" />
             <End Role="CityLookup" EntitySet="CityLookups" />
           </AssociationSet>
+          <EntitySet Name="likes" EntityType="DatabaseModel.like" />
+          <AssociationSet Name="user_id" Association="DatabaseModel.user_id">
+            <End Role="User" EntitySet="Users" />
+            <End Role="like" EntitySet="likes" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Address">
           <Key>
@@ -524,6 +555,27 @@
             </Principal>
             <Dependent Role="CityLookup">
               <PropertyRef Name="state" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="like">
+          <Key>
+            <PropertyRef Name="like_id" />
+          </Key>
+          <Property Name="like_id" Type="Int32" Nullable="false" />
+          <Property Name="user_id" Type="Int32" Nullable="false" />
+          <Property Name="item_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="DatabaseModel.user_id" FromRole="like" ToRole="User" />
+        </EntityType>
+        <Association Name="user_id">
+          <End Type="DatabaseModel.User" Role="User" Multiplicity="1" />
+          <End Type="DatabaseModel.like" Role="like" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="user_id" />
+            </Principal>
+            <Dependent Role="like">
+              <PropertyRef Name="user_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -617,6 +669,15 @@
               <MappingFragment StoreEntitySet="StateLookup">
                 <ScalarProperty Name="state_name" ColumnName="state_name" />
                 <ScalarProperty Name="state_id" ColumnName="state_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="likes">
+            <EntityTypeMapping TypeName="DatabaseModel.like">
+              <MappingFragment StoreEntitySet="like">
+                <ScalarProperty Name="item_id" ColumnName="item_id" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="like_id" ColumnName="like_id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

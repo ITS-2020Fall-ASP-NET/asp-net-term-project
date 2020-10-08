@@ -8,3 +8,13 @@ C:\Users\hansoljo\college\asp-net-term-project\Database\obj\Debug\Model.xml
 C:\Users\hansoljo\college\asp-net-term-project\Database\obj\Debug\refactor.xml
 C:\Users\hansoljo\college\asp-net-term-project\Database\obj\Debug\postdeploy.sql
 C:\Users\hansoljo\college\asp-net-term-project\Database\obj\Debug\predeploy.sql
+C:\Users\cxr72\Documents\github\asp-net-term-project\Database\bin\Debug\Database.dacpac
+C:\Users\cxr72\Documents\github\asp-net-term-project\Database\bin\Debug\Database.dll
+C:\Users\cxr72\Documents\github\asp-net-term-project\Database\bin\Debug\Database.pdb
+C:\Users\cxr72\Documents\github\asp-net-term-project\Database\obj\Debug\Database.sqlprojAssemblyReference.cache
+C:\Users\cxr72\Documents\github\asp-net-term-project\Database\obj\Debug\Database.dll
+C:\Users\cxr72\Documents\github\asp-net-term-project\Database\obj\Debug\Database.pdb
+C:\Users\cxr72\Documents\github\asp-net-term-project\Database\obj\Debug\Model.xml
+C:\Users\cxr72\Documents\github\asp-net-term-project\Database\obj\Debug\refactor.xml
+C:\Users\cxr72\Documents\github\asp-net-term-project\Database\obj\Debug\postdeploy.sql
+C:\Users\cxr72\Documents\github\asp-net-term-project\Database\obj\Debug\predeploy.sql

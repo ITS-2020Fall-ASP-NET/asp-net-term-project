@@ -15,8 +15,8 @@ SET NUMERIC_ROUNDABORT OFF;
 GO
 :setvar DatabaseName "Database"
 :setvar DefaultFilePrefix "Database"
-:setvar DefaultDataPath "C:\Users\hansoljo\AppData\Local\Microsoft\VisualStudio\SSDT\ITS2020_ASPNET_Team_Prj"
-:setvar DefaultLogPath "C:\Users\hansoljo\AppData\Local\Microsoft\VisualStudio\SSDT\ITS2020_ASPNET_Team_Prj"
+:setvar DefaultDataPath "C:\Users\cxr72\AppData\Local\Microsoft\VisualStudio\SSDT\ITS2020_ASPNET_Team_Prj"
+:setvar DefaultLogPath "C:\Users\cxr72\AppData\Local\Microsoft\VisualStudio\SSDT\ITS2020_ASPNET_Team_Prj"
 
 GO
 :on error exit

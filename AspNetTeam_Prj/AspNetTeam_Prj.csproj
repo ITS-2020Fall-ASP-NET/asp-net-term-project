@@ -169,6 +169,9 @@
     <Compile Include="Models\Item.cs">
       <DependentUpon>DefaultModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\like.cs">
+      <DependentUpon>DefaultModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\StateLookup.cs">
       <DependentUpon>DefaultModel.tt</DependentUpon>
     </Compile>

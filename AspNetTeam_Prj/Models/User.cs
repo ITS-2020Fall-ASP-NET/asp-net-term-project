@@ -20,6 +20,7 @@ namespace AspNetTeam_Prj.Models
             this.Items = new HashSet<Item>();
             this.Transactions = new HashSet<Transaction>();
             this.Transactions1 = new HashSet<Transaction>();
+            this.likes = new HashSet<like>();
         }
     
         public int user_id { get; set; }
@@ -37,5 +38,7 @@ namespace AspNetTeam_Prj.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Transaction> Transactions1 { get; set; }
         public virtual Address Address1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<like> likes { get; set; }
     }
 }
