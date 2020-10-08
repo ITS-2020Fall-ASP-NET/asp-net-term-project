@@ -52,3 +52,91 @@ ON Target.category_id = Source.category_id
 WHEN NOT MATCHED BY TARGET THEN
 INSERT (category_id, category_name)
 VALUES (category_id, category_name);
+
+/* StateLookup */
+MERGE INTO [dbo].[StateLookup] AS Target
+USING (VALUES 
+        (0, 'NL'),
+        (1, 'PE'),
+        (2, 'NS'),
+        (3, 'NB'),
+        (4, 'QC'),
+        (5, 'ON'),
+        (6, 'MB'),
+        (7, 'SK'),
+        (8, 'AB'),
+        (9, 'BC'),
+        (10, 'YT'),
+        (11, 'NT'),
+        (12, 'NU')
+)
+AS Source (state_id, state_name)
+ON Target.state_id = Source.state_id
+WHEN NOT MATCHED BY TARGET THEN
+INSERT (state_id, state_name)
+VALUES (state_id, state_name);
+
+/*
+    CityLookup
+     - Temporarily only Ontario cities.
+*/
+MERGE INTO [dbo].[CityLookup] AS Target
+USING (VALUES 
+        (0 , 'Barrie', 5),
+        (1 , 'Belleville', 5),
+        (2 , 'Brampton', 5),
+        (3 , 'Brant', 5),
+        (4 , 'Brantford', 5),
+        (5 , 'Brockville', 5),
+        (6 , 'Burlington', 5),
+        (7 , 'Cambridge', 5),
+        (8 , 'Clarence-Rockland', 5),
+        (9 , 'Cornwall', 5),
+        (10, 'Dryden', 5),
+        (11, 'Elliot Lake', 5),
+        (12, 'Greater Sudbury', 5),
+        (13, 'Guelph', 5),
+        (14, 'Haldimand County', 5),
+        (15, 'Hamilton', 5),
+        (16, 'Kawartha Lakes', 5),
+        (17, 'Kenora', 5),
+        (18, 'Kingston', 5),
+        (19, 'Kitchener', 5),
+        (20, 'London', 5),
+        (21, 'Markham', 5),
+        (22, 'Mississauga', 5),
+        (23, 'Niagara Falls', 5),
+        (24, 'Norfolk County', 5),
+        (25, 'North Bay', 5),
+        (26, 'Orillia', 5),
+        (27, 'Oshawa', 5),
+        (28, 'Ottawa', 5),
+        (29, 'Owen Sound', 5),
+        (30, 'Pembroke', 5),
+        (31, 'Peterborough', 5),
+        (32, 'Pickering', 5),
+        (33, 'Port Colborne', 5),
+        (34, 'Prince Edward County', 5),
+        (35, 'Quinte West', 5),
+        (36, 'Richmond Hill', 5),
+        (37, 'Sarnia', 5),
+        (38, 'Sault Ste. Marie', 5),
+        (39, 'St. Catharines', 5),
+        (40, 'St. Thomas', 5),
+        (41, 'Stratford', 5),
+        (42, 'Temiskaming Shores', 5),
+        (43, 'Thorold', 5),
+        (44, 'Thunder Bay', 5),
+        (45, 'Timmins', 5),
+        (46, 'Toronto', 5),
+        (47, 'Vaughan', 5),
+        (48, 'Waterloo', 5),
+        (49, 'Welland', 5),
+        (50, 'Windsor', 5),
+        (51, 'Woodstock', 5)
+)
+AS Source (city_id, city_name, state)
+ON Target.city_id = Source.city_id
+WHEN NOT MATCHED BY TARGET THEN
+INSERT (city_id, city_name, state)
+VALUES (city_id, city_name, state);

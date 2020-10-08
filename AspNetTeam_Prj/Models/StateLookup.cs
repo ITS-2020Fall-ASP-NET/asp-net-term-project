@@ -12,30 +12,21 @@ namespace AspNetTeam_Prj.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class User
+    public partial class StateLookup
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public User()
+        public StateLookup()
         {
-            this.Items = new HashSet<Item>();
-            this.Transactions = new HashSet<Transaction>();
-            this.Transactions1 = new HashSet<Transaction>();
+            this.Addresses = new HashSet<Address>();
+            this.CityLookups = new HashSet<CityLookup>();
         }
     
-        public int user_id { get; set; }
-        public string fname { get; set; }
-        public string lname { get; set; }
-        public string passwd { get; set; }
-        public string email { get; set; }
-        public Nullable<decimal> reputation { get; set; }
-        public Nullable<int> address { get; set; }
+        public int state_id { get; set; }
+        public string state_name { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Item> Items { get; set; }
+        public virtual ICollection<Address> Addresses { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Transaction> Transactions { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Transaction> Transactions1 { get; set; }
-        public virtual Address Address1 { get; set; }
+        public virtual ICollection<CityLookup> CityLookups { get; set; }
     }
 }

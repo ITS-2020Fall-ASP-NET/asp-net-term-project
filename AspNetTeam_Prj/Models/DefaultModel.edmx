@@ -4,13 +4,34 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="DatabaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="DatabaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Address">
+          <Key>
+            <PropertyRef Name="address_id" />
+          </Key>
+          <Property Name="address_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Address1" Type="varchar" MaxLength="120" Nullable="false" />
+          <Property Name="Address2" Type="varchar" MaxLength="120" />
+          <Property Name="Address3" Type="varchar" MaxLength="120" />
+          <Property Name="City" Type="int" />
+          <Property Name="State" Type="int" />
+          <Property Name="Country" Type="char" MaxLength="2" Nullable="false" />
+          <Property Name="PostalCode" Type="varchar" MaxLength="16" Nullable="false" />
+        </EntityType>
         <EntityType Name="Category">
           <Key>
             <PropertyRef Name="category_id" />
           </Key>
           <Property Name="category_id" Type="int" Nullable="false" />
           <Property Name="category_name" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="CityLookup">
+          <Key>
+            <PropertyRef Name="city_id" />
+          </Key>
+          <Property Name="city_id" Type="int" Nullable="false" />
+          <Property Name="city_name" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="state" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Comment">
           <Key>
@@ -31,6 +52,13 @@
           <Property Name="description" Type="nvarchar(max)" />
           <Property Name="category" Type="int" />
           <Property Name="like_count" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="StateLookup">
+          <Key>
+            <PropertyRef Name="state_id" />
+          </Key>
+          <Property Name="state_id" Type="int" Nullable="false" />
+          <Property Name="state_name" Type="char" MaxLength="2" Nullable="false" />
         </EntityType>
         <EntityType Name="Transaction">
           <Key>
@@ -54,6 +82,7 @@
           <Property Name="passwd" Type="nchar" MaxLength="10" />
           <Property Name="email" Type="nvarchar" MaxLength="50" />
           <Property Name="reputation" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="address" Type="int" />
         </EntityType>
         <Association Name="FK__Comment__item_id__2E1BDC42">
           <End Role="Item" Type="Self.Item" Multiplicity="0..1" />
@@ -88,6 +117,42 @@
             </Principal>
             <Dependent Role="Item">
               <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Address_CityLookup">
+          <End Role="CityLookup" Type="Self.CityLookup" Multiplicity="0..1" />
+          <End Role="Address" Type="Self.Address" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CityLookup">
+              <PropertyRef Name="city_id" />
+            </Principal>
+            <Dependent Role="Address">
+              <PropertyRef Name="City" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Address_StateLookup">
+          <End Role="StateLookup" Type="Self.StateLookup" Multiplicity="0..1" />
+          <End Role="Address" Type="Self.Address" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StateLookup">
+              <PropertyRef Name="state_id" />
+            </Principal>
+            <Dependent Role="Address">
+              <PropertyRef Name="State" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CityLookup_StateLookup">
+          <End Role="StateLookup" Type="Self.StateLookup" Multiplicity="1" />
+          <End Role="CityLookup" Type="Self.CityLookup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StateLookup">
+              <PropertyRef Name="state_id" />
+            </Principal>
+            <Dependent Role="CityLookup">
+              <PropertyRef Name="state" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -127,10 +192,25 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_User_Address">
+          <End Role="Address" Type="Self.Address" Multiplicity="0..1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Address">
+              <PropertyRef Name="address_id" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="address" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="DatabaseModelStoreContainer">
+          <EntitySet Name="Address" EntityType="Self.Address" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CityLookup" EntityType="Self.CityLookup" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Comment" EntityType="Self.Comment" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Item" EntityType="Self.Item" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StateLookup" EntityType="Self.StateLookup" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Transaction" EntityType="Self.Transaction" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK__Comment__item_id__2E1BDC42" Association="Self.FK__Comment__item_id__2E1BDC42">
@@ -145,6 +225,18 @@
             <End Role="User" EntitySet="User" />
             <End Role="Item" EntitySet="Item" />
           </AssociationSet>
+          <AssociationSet Name="FK_Address_CityLookup" Association="Self.FK_Address_CityLookup">
+            <End Role="CityLookup" EntitySet="CityLookup" />
+            <End Role="Address" EntitySet="Address" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Address_StateLookup" Association="Self.FK_Address_StateLookup">
+            <End Role="StateLookup" EntitySet="StateLookup" />
+            <End Role="Address" EntitySet="Address" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CityLookup_StateLookup" Association="Self.FK_CityLookup_StateLookup">
+            <End Role="StateLookup" EntitySet="StateLookup" />
+            <End Role="CityLookup" EntitySet="CityLookup" />
+          </AssociationSet>
           <AssociationSet Name="FK_Transaction_Buyer" Association="Self.FK_Transaction_Buyer">
             <End Role="User" EntitySet="User" />
             <End Role="Transaction" EntitySet="Transaction" />
@@ -157,9 +249,12 @@
             <End Role="User" EntitySet="User" />
             <End Role="Transaction" EntitySet="Transaction" />
           </AssociationSet>
+          <AssociationSet Name="FK_User_Address" Association="Self.FK_User_Address">
+            <End Role="Address" EntitySet="Address" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="DatabaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -208,8 +303,8 @@
           <Property Name="date" Type="DateTime" Precision="3" />
           <Property Name="status" Type="Int32" />
           <NavigationProperty Name="Item" Relationship="Self.FK_Transaction_Item" FromRole="Transaction" ToRole="Item" />
-          <NavigationProperty Name="User" Relationship="Self.FK_Transaction_Buyer" FromRole="Transaction" ToRole="User" />
-          <NavigationProperty Name="User1" Relationship="Self.FK_Transaction_Seller" FromRole="Transaction" ToRole="User" />
+          <NavigationProperty Name="Buyer" Relationship="Self.FK_Transaction_Buyer" FromRole="Transaction" ToRole="User" />
+          <NavigationProperty Name="Seller" Relationship="Self.FK_Transaction_Seller" FromRole="Transaction" ToRole="User" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -224,6 +319,8 @@
           <NavigationProperty Name="Items" Relationship="Self.FK__Item__user_id__36B12243" FromRole="User" ToRole="Item" />
           <NavigationProperty Name="Transactions" Relationship="Self.FK_Transaction_Buyer" FromRole="User" ToRole="Transaction" />
           <NavigationProperty Name="Transactions1" Relationship="Self.FK_Transaction_Seller" FromRole="User" ToRole="Transaction" />
+          <Property Name="address" Type="Int32" />
+          <NavigationProperty Name="Address1" Relationship="DatabaseModel.FK_User_Address" FromRole="User" ToRole="Address" />
         </EntityType>
         <Association Name="FK__Item__category__31EC6D26">
           <End Role="Category" Type="Self.Category" Multiplicity="0..1" />
@@ -327,7 +424,109 @@
             <End Role="User" EntitySet="Users" />
             <End Role="Transaction" EntitySet="Transactions" />
           </AssociationSet>
+          <EntitySet Name="Addresses" EntityType="DatabaseModel.Address" />
+          <EntitySet Name="CityLookups" EntityType="DatabaseModel.CityLookup" />
+          <EntitySet Name="StateLookups" EntityType="DatabaseModel.StateLookup" />
+          <AssociationSet Name="FK_Address_CityLookup" Association="DatabaseModel.FK_Address_CityLookup">
+            <End Role="CityLookup" EntitySet="CityLookups" />
+            <End Role="Address" EntitySet="Addresses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Address_StateLookup" Association="DatabaseModel.FK_Address_StateLookup">
+            <End Role="StateLookup" EntitySet="StateLookups" />
+            <End Role="Address" EntitySet="Addresses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Address" Association="DatabaseModel.FK_User_Address">
+            <End Role="Address" EntitySet="Addresses" />
+            <End Role="User" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CityLookup_StateLookup" Association="DatabaseModel.FK_CityLookup_StateLookup">
+            <End Role="StateLookup" EntitySet="StateLookups" />
+            <End Role="CityLookup" EntitySet="CityLookups" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="Address">
+          <Key>
+            <PropertyRef Name="address_id" />
+          </Key>
+          <Property Name="address_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Address1" Type="String" Nullable="false" MaxLength="120" FixedLength="false" Unicode="false" />
+          <Property Name="Address2" Type="String" MaxLength="120" FixedLength="false" Unicode="false" />
+          <Property Name="Address3" Type="String" MaxLength="120" FixedLength="false" Unicode="false" />
+          <Property Name="City" Type="Int32" />
+          <Property Name="State" Type="Int32" />
+          <Property Name="Country" Type="String" Nullable="false" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="PostalCode" Type="String" Nullable="false" MaxLength="16" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="CityLookup" Relationship="DatabaseModel.FK_Address_CityLookup" FromRole="Address" ToRole="CityLookup" />
+          <NavigationProperty Name="StateLookup" Relationship="DatabaseModel.FK_Address_StateLookup" FromRole="Address" ToRole="StateLookup" />
+          <NavigationProperty Name="Users" Relationship="DatabaseModel.FK_User_Address" FromRole="Address" ToRole="User" />
+        </EntityType>
+        <EntityType Name="CityLookup">
+          <Key>
+            <PropertyRef Name="city_id" />
+          </Key>
+          <Property Name="city_id" Type="Int32" Nullable="false" />
+          <Property Name="city_name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Addresses" Relationship="DatabaseModel.FK_Address_CityLookup" FromRole="CityLookup" ToRole="Address" />
+          <Property Name="state" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="StateLookup" Relationship="DatabaseModel.FK_CityLookup_StateLookup" FromRole="CityLookup" ToRole="StateLookup" />
+        </EntityType>
+        <EntityType Name="StateLookup">
+          <Key>
+            <PropertyRef Name="state_id" />
+          </Key>
+          <Property Name="state_id" Type="Int32" Nullable="false" />
+          <Property Name="state_name" Type="String" Nullable="false" MaxLength="2" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="Addresses" Relationship="DatabaseModel.FK_Address_StateLookup" FromRole="StateLookup" ToRole="Address" />
+          <NavigationProperty Name="CityLookups" Relationship="DatabaseModel.FK_CityLookup_StateLookup" FromRole="StateLookup" ToRole="CityLookup" />
+        </EntityType>
+        <Association Name="FK_Address_CityLookup">
+          <End Type="DatabaseModel.CityLookup" Role="CityLookup" Multiplicity="0..1" />
+          <End Type="DatabaseModel.Address" Role="Address" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CityLookup">
+              <PropertyRef Name="city_id" />
+            </Principal>
+            <Dependent Role="Address">
+              <PropertyRef Name="City" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Address_StateLookup">
+          <End Type="DatabaseModel.StateLookup" Role="StateLookup" Multiplicity="0..1" />
+          <End Type="DatabaseModel.Address" Role="Address" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StateLookup">
+              <PropertyRef Name="state_id" />
+            </Principal>
+            <Dependent Role="Address">
+              <PropertyRef Name="State" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Address">
+          <End Type="DatabaseModel.Address" Role="Address" Multiplicity="0..1" />
+          <End Type="DatabaseModel.User" Role="User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Address">
+              <PropertyRef Name="address_id" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="address" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CityLookup_StateLookup">
+          <End Type="DatabaseModel.StateLookup" Role="StateLookup" Multiplicity="1" />
+          <End Type="DatabaseModel.CityLookup" Role="CityLookup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StateLookup">
+              <PropertyRef Name="state_id" />
+            </Principal>
+            <Dependent Role="CityLookup">
+              <PropertyRef Name="state" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -380,12 +579,44 @@
           <EntitySetMapping Name="Users">
             <EntityTypeMapping TypeName="DatabaseModel.User">
               <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="address" ColumnName="address" />
                 <ScalarProperty Name="user_id" ColumnName="user_id" />
                 <ScalarProperty Name="fname" ColumnName="fname" />
                 <ScalarProperty Name="lname" ColumnName="lname" />
                 <ScalarProperty Name="passwd" ColumnName="passwd" />
                 <ScalarProperty Name="email" ColumnName="email" />
                 <ScalarProperty Name="reputation" ColumnName="reputation" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Addresses">
+            <EntityTypeMapping TypeName="DatabaseModel.Address">
+              <MappingFragment StoreEntitySet="Address">
+                <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Address3" ColumnName="Address3" />
+                <ScalarProperty Name="Address2" ColumnName="Address2" />
+                <ScalarProperty Name="Address1" ColumnName="Address1" />
+                <ScalarProperty Name="address_id" ColumnName="address_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CityLookups">
+            <EntityTypeMapping TypeName="DatabaseModel.CityLookup">
+              <MappingFragment StoreEntitySet="CityLookup">
+                <ScalarProperty Name="state" ColumnName="state" />
+                <ScalarProperty Name="city_name" ColumnName="city_name" />
+                <ScalarProperty Name="city_id" ColumnName="city_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StateLookups">
+            <EntityTypeMapping TypeName="DatabaseModel.StateLookup">
+              <MappingFragment StoreEntitySet="StateLookup">
+                <ScalarProperty Name="state_name" ColumnName="state_name" />
+                <ScalarProperty Name="state_id" ColumnName="state_id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

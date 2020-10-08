@@ -30,5 +30,8 @@ namespace AspNetTeam_Prj.Models
         public virtual DbSet<Item> Items { get; set; }
         public virtual DbSet<Transaction> Transactions { get; set; }
         public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<Address> Addresses { get; set; }
+        public virtual DbSet<CityLookup> CityLookups { get; set; }
+        public virtual DbSet<StateLookup> StateLookups { get; set; }
     }
 }

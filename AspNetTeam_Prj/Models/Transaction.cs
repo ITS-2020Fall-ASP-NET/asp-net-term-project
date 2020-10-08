@@ -23,7 +23,7 @@ namespace AspNetTeam_Prj.Models
         public Nullable<int> status { get; set; }
     
         public virtual Item Item { get; set; }
-        public virtual User User { get; set; }
-        public virtual User User1 { get; set; }
+        public virtual User Buyer { get; set; }
+        public virtual User Seller { get; set; }
     }
 }

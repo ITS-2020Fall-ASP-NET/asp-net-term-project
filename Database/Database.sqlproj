@@ -63,6 +63,9 @@
     <Build Include="Category.sql" />
     <Build Include="Comment.sql" />
     <Build Include="Transaction.sql" />
+    <Build Include="Address.sql" />
+    <Build Include="CityLookup.sql" />
+    <Build Include="StateLookup.sql" />
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="Script.PostDeployment1.sql" />

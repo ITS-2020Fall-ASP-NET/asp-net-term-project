@@ -5,5 +5,7 @@
     [lname] NVARCHAR(50) NULL,
     [passwd] NCHAR(10) NULL, 
     [email] NVARCHAR(50) NULL, 
-    [reputation] DECIMAL NULL
+    [reputation] DECIMAL NULL,
+    [address] INT, 
+    CONSTRAINT [FK_User_Address] FOREIGN KEY ([address]) REFERENCES [Address]([address_id])
 )
