@@ -61,6 +61,40 @@ ON Target.user_id = Source.user_id
 WHEN NOT MATCHED BY TARGET THEN
 INSERT (user_id, fname, lname, passwd, email, reputation)
 VALUES (user_id, fname, lname, passwd, email, reputation);
+
+
+/* Categories */
+
+MERGE INTO [dbo].[Category] AS Target
+USING (VALUES 
+        (0, 'Baby'),
+        (1, 'Beauty'),
+        (2, 'Books'),
+        (3, 'Camera & Photo'),
+        (4, 'Clothing & Accessories'),
+        (5, 'Consumer Electronics'),
+        (6, 'Grocery & Gourmet Foods'),
+        (7, 'Health & Personal Care'),
+        (8, 'Home & Garden'),
+        (10, 'Industrial & Scientific'),
+        (11, 'Luggage & Travel Accessories'),
+        (12, 'Musical Instruments'),
+        (13, 'Office Products'),
+        (14, 'Outdoors'),
+        (15, 'Personal Computers'),
+        (16, 'Pet Supplies'),
+        (17, 'Shoes, Handbags, & Sunglasses'),
+        (18, 'Software'),
+        (19, 'Sports'),
+        (20, 'Tools & Home Improvement'),
+        (21, 'Toys'),
+        (22, 'Video Games')
+)
+AS Source (category_id, category_name)
+ON Target.category_id = Source.category_id
+WHEN NOT MATCHED BY TARGET THEN
+INSERT (category_id, category_name)
+VALUES (category_id, category_name);
 GO
 
 GO
