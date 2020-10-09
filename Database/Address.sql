@@ -1,6 +1,6 @@
 ﻿CREATE TABLE [dbo].[Address]
 (
-    address_id  INT NOT NULL IDENTITY(1, 1) PRIMARY KEY,
+    address_id  INT NOT NULL PRIMARY KEY,
     Address1    VARCHAR(120) NOT NULL,
     Address2    VARCHAR(120),
     Address3    VARCHAR(120),

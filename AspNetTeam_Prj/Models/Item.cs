@@ -28,6 +28,7 @@ namespace AspNetTeam_Prj.Models
         public string description { get; set; }
         public Nullable<int> category { get; set; }
         public string like_count { get; set; }
+        public string img_path { get; set; }
     
         public virtual Category Category1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

@@ -6,4 +6,4 @@ Database/Database.dbmdl
 Database/Database.jfm
 
 .vs/ITS2020_ASPNET_Team_Prj/config/applicationhost.config
-.vs/ITS2020_ASPNET_Team_Prj/v16/.suo
+*.suo

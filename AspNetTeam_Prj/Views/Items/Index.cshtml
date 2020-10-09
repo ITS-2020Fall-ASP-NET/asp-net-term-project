@@ -10,6 +10,7 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
+
 <table class="table">
     <tr>
         <th>
@@ -51,6 +52,7 @@
             @Html.DisplayFor(modelItem => item.Category1.category_name)
         </td>
         <td>
+            <img src="~/Content/img/item/@item.img_path" alt="Image" />
             @Html.DisplayFor(modelItem => item.User.fname)
         </td>
         <td>

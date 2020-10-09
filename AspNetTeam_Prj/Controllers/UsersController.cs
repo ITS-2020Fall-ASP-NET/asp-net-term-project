@@ -17,7 +17,8 @@ namespace AspNetTeam_Prj.Controllers
         // GET: Users
         public ActionResult Index()
         {
-            return View(db.Users.ToList());
+            var users = db.Users.Include(u => u.Address1);
+            return View(users.ToList());
         }
 
         // GET: Users/Details/5
@@ -38,6 +39,7 @@ namespace AspNetTeam_Prj.Controllers
         // GET: Users/Create
         public ActionResult Create()
         {
+            ViewBag.address = new SelectList(db.Addresses, "address_id", "Address1");
             return View();
         }
 
@@ -46,7 +48,7 @@ namespace AspNetTeam_Prj.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "user_id,fname,lname,passwd,email,reputation")] User user)
+        public ActionResult Create([Bind(Include = "user_id,fname,lname,passwd,email,reputation,address")] User user)
         {
             if (ModelState.IsValid)
             {
@@ -55,6 +57,7 @@ namespace AspNetTeam_Prj.Controllers
                 return RedirectToAction("Index");
             }
 
+            ViewBag.address = new SelectList(db.Addresses, "address_id", "Address1", user.address);
             return View(user);
         }
 
@@ -70,6 +73,7 @@ namespace AspNetTeam_Prj.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.address = new SelectList(db.Addresses, "address_id", "Address1", user.address);
             return View(user);
         }
 
@@ -78,7 +82,7 @@ namespace AspNetTeam_Prj.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "user_id,fname,lname,passwd,email,reputation")] User user)
+        public ActionResult Edit([Bind(Include = "user_id,fname,lname,passwd,email,reputation,address")] User user)
         {
             if (ModelState.IsValid)
             {
@@ -86,6 +90,7 @@ namespace AspNetTeam_Prj.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.address = new SelectList(db.Addresses, "address_id", "Address1", user.address);
             return View(user);
         }
 

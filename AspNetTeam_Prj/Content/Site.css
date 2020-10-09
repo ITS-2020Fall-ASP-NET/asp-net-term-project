@@ -172,3 +172,11 @@ footer {
     justify-content: space-between;
     margin-bottom: 4rem;
 }
+
+.button-sign-in {
+    margin-left: 4rem;
+}
+
+#logo {
+    margin-right: 4rem
+}

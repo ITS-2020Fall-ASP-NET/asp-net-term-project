@@ -9,7 +9,7 @@
           <Key>
             <PropertyRef Name="address_id" />
           </Key>
-          <Property Name="address_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="address_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="Address1" Type="varchar" MaxLength="120" Nullable="false" />
           <Property Name="Address2" Type="varchar" MaxLength="120" />
           <Property Name="Address3" Type="varchar" MaxLength="120" />
@@ -52,6 +52,7 @@
           <Property Name="description" Type="nvarchar(max)" />
           <Property Name="category" Type="int" />
           <Property Name="like_count" Type="nchar" MaxLength="10" />
+          <Property Name="img_path" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="like">
           <Key>
@@ -315,6 +316,7 @@
           <NavigationProperty Name="Comments" Relationship="Self.FK__Comment__item_id__2E1BDC42" FromRole="Item" ToRole="Comment" />
           <NavigationProperty Name="User" Relationship="Self.FK__Item__user_id__36B12243" FromRole="Item" ToRole="User" />
           <NavigationProperty Name="Transactions" Relationship="Self.FK_Transaction_Item" FromRole="Item" ToRole="Transaction" />
+          <Property Name="img_path" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Transaction">
           <Key>
@@ -605,6 +607,7 @@
           <EntitySetMapping Name="Items">
             <EntityTypeMapping TypeName="DatabaseModel.Item">
               <MappingFragment StoreEntitySet="Item">
+                <ScalarProperty Name="img_path" ColumnName="img_path" />
                 <ScalarProperty Name="item_id" ColumnName="item_id" />
                 <ScalarProperty Name="user_id" ColumnName="user_id" />
                 <ScalarProperty Name="name" ColumnName="name" />

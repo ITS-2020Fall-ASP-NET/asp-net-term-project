@@ -10,15 +10,46 @@ Post-Deployment Script Template
 --------------------------------------------------------------------------------------
 */
 
+/* Test address */
+MERGE INTO [dbo].[Address] AS Target
+USING (VALUES 
+        (0, '2143 Meadowglen Dr', '', '', 53, 5, 'CA', 'L6M4C7')
+)
+AS Source (address_id, Address1, Address2, Address3, City, State, Country, PostalCode)
+ON Target.address_id = Source.address_id
+WHEN NOT MATCHED BY TARGET THEN
+INSERT (address_id, Address1, Address2, Address3, City, State, Country, PostalCode)
+VALUES (address_id, Address1, Address2, Address3, City, State, Country, PostalCode);
+
+/* Test user */
 MERGE INTO [dbo].[User] AS Target
 USING (VALUES 
-        (1, 'Hansol', 'Jo', '12341234', 'hansol.jo@gmail.com', 0)
+        (0, 'Hansol', 'Jo', '12341234', 'hansol.jo@gmail.com', 0, 0)
 )
-AS Source (user_id, fname, lname, passwd, email, reputation)
+AS Source (user_id, fname, lname, passwd, email, reputation, address)
 ON Target.user_id = Source.user_id
 WHEN NOT MATCHED BY TARGET THEN
-INSERT (user_id, fname, lname, passwd, email, reputation)
-VALUES (user_id, fname, lname, passwd, email, reputation);
+INSERT (user_id, fname, lname, passwd, email, reputation, address)
+VALUES (user_id, fname, lname, passwd, email, reputation, address);
+
+/* Test item */
+MERGE INTO [dbo].[Item] AS Target
+USING (VALUES 
+        (0, 0, 'Intel i7-10700k', 500, 'Bang for bucks', 15, 123, '71P3chRzgNL._AC_UL270_SR234,270_.jpg'),
+        (1, 0, 'Samsung EVO 970 Plus', 200, 'Best SSD ever', 15, 321, '31_rkXdQL8L._AC_SY200_.jpg'),
+        (2, 0, 'Wi-fi router', 100, 'Mint condition', 5, 22, '41VDUqScJFL.__AC_SY200_.jpg'),
+        (3, 0, 'Neon sign deco', 50, 'Skeleton shape', 8, 3, '51L5hC9ntiL._AC_SY200_.jpg'),
+        (4, 0, 'Men''s wallet', 10, 'Made in Italy', 4, 12, '51WemmPkikL.__AC_SY200_.jpg'),
+        (5, 0, 'Magformers Pow patrol', 110, 'Bought in 2018', 21, 29, '51WH9X2JTBL._AC_SY200_.jpg'),
+        (6, 0, 'Bluetooth speakers', 220, 'Sounds great', 5, 209, '412kIhspKgL._AC_SL260_.jpg'),
+        (7, 0, 'Asus Vivobook', 320, '128G sdd, 4Gb ram', 15, 42, '4130RrCBUVL.__AC_SY200_.jpg'),
+        (8, 0, 'LOL Lights glitter', 5, 'Not opened', 21, 7, '81Lwp3Oj4AL._AC_UL220_SR180,220_.jpg')
+)
+AS Source (item_id, user_id, name, listing_price, description, category, like_count, img_path)
+ON Target.item_id = Source.item_id
+WHEN NOT MATCHED BY TARGET THEN
+INSERT (item_id, user_id, name, listing_price, description, category, like_count, img_path)
+VALUES (item_id, user_id, name, listing_price, description, category, like_count, img_path);
 
 
 /* Categories */
@@ -133,7 +164,10 @@ USING (VALUES
         (48, 'Waterloo', 5),
         (49, 'Welland', 5),
         (50, 'Windsor', 5),
-        (51, 'Woodstock', 5)
+        (51, 'Woodstock', 5),
+        (52, 'Ajax', 5),
+        (53, 'Oakville', 5),
+        (54, 'Whitby', 5)
 )
 AS Source (city_id, city_name, state)
 ON Target.city_id = Source.city_id

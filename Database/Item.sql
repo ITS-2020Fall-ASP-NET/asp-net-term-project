@@ -6,5 +6,6 @@
     [listing_price] DECIMAL NULL, 
     [description] NVARCHAR(MAX) NULL, 
     [category] int FOREIGN KEY REFERENCES [dbo].[Category] ([category_id]), 
-    [like_count] NCHAR(10) NULL
+    [like_count] NCHAR(10) NULL, 
+    [img_path] NVARCHAR(50) NULL
 )

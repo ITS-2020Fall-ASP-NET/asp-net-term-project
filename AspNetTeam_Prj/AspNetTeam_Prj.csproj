@@ -187,6 +187,16 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\img\item\31_rkXdQL8L._AC_SY200_.jpg" />
+    <Content Include="Content\img\item\375682.jpg" />
+    <Content Include="Content\img\item\412kIhspKgL._AC_SL260_.jpg" />
+    <Content Include="Content\img\item\4130RrCBUVL.__AC_SY200_.jpg" />
+    <Content Include="Content\img\item\41VDUqScJFL.__AC_SY200_.jpg" />
+    <Content Include="Content\img\item\51L5hC9ntiL._AC_SY200_.jpg" />
+    <Content Include="Content\img\item\51WemmPkikL.__AC_SY200_.jpg" />
+    <Content Include="Content\img\item\51WH9X2JTBL._AC_SY200_.jpg" />
+    <Content Include="Content\img\item\71P3chRzgNL._AC_UL270_SR234,270_.jpg" />
+    <Content Include="Content\img\item\81Lwp3Oj4AL._AC_UL220_SR180,220_.jpg" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -237,11 +247,6 @@
     <Content Include="Views\PostAd\Index.cshtml" />
     <Content Include="Views\ItemDetail\Index.cshtml" />
     <Content Include="Views\AdList\Index.cshtml" />
-    <Content Include="Views\Users\Create.cshtml" />
-    <Content Include="Views\Users\Delete.cshtml" />
-    <Content Include="Views\Users\Details.cshtml" />
-    <Content Include="Views\Users\Edit.cshtml" />
-    <Content Include="Views\Users\Index.cshtml" />
     <Content Include="Views\Items\Create.cshtml" />
     <Content Include="Views\Items\Delete.cshtml" />
     <Content Include="Views\Items\Details.cshtml" />
@@ -253,6 +258,11 @@
     <Content Include="Views\Categories\Edit.cshtml" />
     <Content Include="Views\Categories\Index.cshtml" />
     <Content Include="Views\ItemDetail\Detail.cshtml" />
+    <Content Include="Views\Users\Create.cshtml" />
+    <Content Include="Views\Users\Delete.cshtml" />
+    <Content Include="Views\Users\Details.cshtml" />
+    <Content Include="Views\Users\Edit.cshtml" />
+    <Content Include="Views\Users\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
