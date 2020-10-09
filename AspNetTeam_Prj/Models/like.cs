@@ -19,5 +19,6 @@ namespace AspNetTeam_Prj.Models
         public int item_id { get; set; }
     
         public virtual User User { get; set; }
+        public virtual Item Item { get; set; }
     }
 }

@@ -1,0 +1,47 @@
+﻿@model AspNetTeam_Prj.Models.like
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to unlike this item?</h3>
+<div>
+    <h4>Item</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Item.name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Item.name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Item.listing_price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Item.listing_price)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Item.description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Item.description)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index", new { user_id = Model.user_id })
+        </div>
+    }
+</div>

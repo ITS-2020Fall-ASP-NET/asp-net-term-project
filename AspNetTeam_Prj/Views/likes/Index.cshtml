@@ -1,0 +1,55 @@
+﻿@model IEnumerable<AspNetTeam_Prj.Models.like>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Item.name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Item.listing_price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Item.description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Item.category)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Item.like_count)
+        </th>
+    </tr>
+
+@foreach (var item in Model)
+{
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Item.name)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Item.listing_price)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Item.description)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Item.category)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Item.like_count)
+    </td>
+    <td>
+        @Html.ActionLink("Details", "Details", new { id=item.like_id }) |
+        @Html.ActionLink("Unlike", "Delete", new { id = item.like_id })
+    </td>
+</tr>
+}
+
+</table>

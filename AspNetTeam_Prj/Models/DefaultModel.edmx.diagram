@@ -25,6 +25,7 @@
         <AssociationConnector Association="DatabaseModel.FK_CityLookup_StateLookup" />
         <EntityTypeShape EntityType="DatabaseModel.like" Width="1.5" PointX="3" PointY="6.875" />
         <AssociationConnector Association="DatabaseModel.user_id" />
+        <AssociationConnector Association="DatabaseModel.FK_Like_item_id" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

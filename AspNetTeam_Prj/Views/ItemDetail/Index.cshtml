@@ -1,8 +1,16 @@
-﻿
+﻿@model IEnumerable<AspNetTeam_Prj.Models.Item>
 @{
     ViewBag.Title = "ItemDetail";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2>ItemDetail</h2>
-
+@foreach (var item in Model)
+{
+    @Html.DisplayFor(modelitem => item)
+    @Html.ActionLink("Detail", "Detail", new
+{
+    item_id = item.item_id,
+    ShowAlreadyLikedModal = false
+})
+}

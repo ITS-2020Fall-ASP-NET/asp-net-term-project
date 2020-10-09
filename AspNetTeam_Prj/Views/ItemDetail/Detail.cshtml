@@ -3,17 +3,17 @@
     ViewBag.Title = "Detail";
     Layout = "~/Views/Shared/_Layout.cshtml";
     var item_id = Model.item_id;
-    var count = Model.like_count;
 }
 <h2>Detail</h2>
 <div>
     @Html.DisplayFor(model => model)
-@Html.ActionLink("Like", "Like", new
-{
-    id = item_id,
-    user_id = 1,
-    count = count
-})
+    @Html.ActionLink("Like", "Like", new
+    {
+        like_id = ViewBag.newLikeId,
+        user_id = 0,
+        item_id = item_id
+        })
+    @Html.ActionLink("Back to all items", "Index")
 </div>
 @section scripts {
     <script>
