@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Data.Entity.Infrastructure;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 
@@ -43,17 +44,7 @@ namespace AspNetTeam_Prj.Controllers
             }
             return RedirectToAction("Detail", "ItemDetail", new { item_id = like.item_id, ShowAlreadyLikedModal = true });
         }
-        /*
-        private void AddLikeCount(string count, int item_id)
-        {
-            int like_count = Int32.Parse(count) + 1;
-            Item item = db.Items.Find(item_id);
-            item.like_count = like_count.ToString();
-            //string query2 = "UPDATE item SET like_count=" + like_count.ToString() + "WHERE item_id=" + item_id;
-            //var cmd = new SqlCommand(query2, conn);
-            //cmd.ExecuteReader();
-        }
-        */
+       
         private int GetNewLikeId()
         {
             return db.likes.Count() + 1;
@@ -63,6 +54,19 @@ namespace AspNetTeam_Prj.Controllers
             var query = db.likes.Where(l => (l.user_id == user_id && l.item_id == item_id));
             return query.Count() != 0;
 
+        }
+
+
+        // GET: Category-Items
+        public ActionResult CategoryItems(int category_id)
+        {
+            Category category = db.Categories.Find(category_id);
+            if (category == null)
+            {
+                return HttpNotFound();
+            }
+            var items = category.Items.ToList();
+            return View("Index", items);
         }
     }
 }
