@@ -93,7 +93,7 @@
           <Property Name="reputation" Type="decimal" Precision="18" Scale="0" />
           <Property Name="address" Type="int" />
         </EntityType>
-        <Association Name="FK__Comment__item_id__6166761E">
+        <Association Name="FK__Comment__item_id__59FA5E80">
           <End Role="Item" Type="Self.Item" Multiplicity="0..1" />
           <End Role="Comment" Type="Self.Comment" Multiplicity="*" />
           <ReferentialConstraint>
@@ -105,7 +105,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Item__category__634EBE90">
+        <Association Name="FK__Item__category__59063A47">
           <End Role="Category" Type="Self.Category" Multiplicity="0..1" />
           <End Role="Item" Type="Self.Item" Multiplicity="*" />
           <ReferentialConstraint>
@@ -117,7 +117,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Item__user_id__625A9A57">
+        <Association Name="FK__Item__user_id__5812160E">
           <End Role="User" Type="Self.User" Multiplicity="0..1" />
           <End Role="Item" Type="Self.Item" Multiplicity="*" />
           <ReferentialConstraint>
@@ -247,15 +247,15 @@
           <EntitySet Name="StateLookup" EntityType="Self.StateLookup" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Transaction" EntityType="Self.Transaction" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__Comment__item_id__6166761E" Association="Self.FK__Comment__item_id__6166761E">
+          <AssociationSet Name="FK__Comment__item_id__59FA5E80" Association="Self.FK__Comment__item_id__59FA5E80">
             <End Role="Item" EntitySet="Item" />
             <End Role="Comment" EntitySet="Comment" />
           </AssociationSet>
-          <AssociationSet Name="FK__Item__category__634EBE90" Association="Self.FK__Item__category__634EBE90">
+          <AssociationSet Name="FK__Item__category__59063A47" Association="Self.FK__Item__category__59063A47">
             <End Role="Category" EntitySet="Category" />
             <End Role="Item" EntitySet="Item" />
           </AssociationSet>
-          <AssociationSet Name="FK__Item__user_id__625A9A57" Association="Self.FK__Item__user_id__625A9A57">
+          <AssociationSet Name="FK__Item__user_id__5812160E" Association="Self.FK__Item__user_id__5812160E">
             <End Role="User" EntitySet="User" />
             <End Role="Item" EntitySet="Item" />
           </AssociationSet>
