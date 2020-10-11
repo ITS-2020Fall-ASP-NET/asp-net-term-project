@@ -163,13 +163,7 @@ footer {
 
 .footer-top {
     display: flex;
-    justify-content: space-between;
-    margin-bottom: 4rem;
-}
-
-.footer-bottom {
-    display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     margin-bottom: 4rem;
 }
 
@@ -179,4 +173,27 @@ footer {
 
 #logo {
     margin-right: 4rem
+}
+
+.footer-list {
+    list-style-type: none;
+}
+
+.footer-list-item {
+    display: block;
+    font-size: 1.2rem;
+    margin-bottom: 1.2rem;
+}
+
+.footer-list-item a {
+    color: #ADB5BD;
+    text-decoration: none;
+}
+
+.copyright {
+    text-align: center
+}
+
+.copyrightText {
+    margin: 0
 }
