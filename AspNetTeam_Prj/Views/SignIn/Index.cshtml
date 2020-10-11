@@ -1,0 +1,32 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container" id="sign-in-container">
+    <p id="sign-in-title">Sign In</p>
+    <form>
+        <div class="form-group">
+            <label for="exampleInputEmail1">Email address</label>
+            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1">Password</label>
+            <input type="password" class="form-control" id="exampleInputPassword1">
+        </div>
+        <div class="form-group form-check">
+            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+            <label class="form-check-label" for="exampleCheck1">Remeber me</label>
+        </div>
+        <button type="submit" class="btn btn-outline-primary">Sign In</button>
+        <hr />
+        <div style="text-align: center;">
+            <p>Not registered yet?<br />
+            Register now to post, edit, and manage ads. It’s quick, easy, and free!</p>
+            <button type="submit" class="btn btn-dark">Register</button>
+        </div>
+    </form>
+</div>
+
