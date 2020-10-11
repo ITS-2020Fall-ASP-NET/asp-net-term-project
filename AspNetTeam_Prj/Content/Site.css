@@ -21,6 +21,14 @@ body {
     white-space: normal;
 }
 
+.logo {
+    width: 30px;
+    height: 30px;
+    background-image: url('img/favicon.png');
+    background-size: 30px 30px;
+    margin-right: 5px;
+}
+
 .navbar {
     width: 100%;
     top: 0;
@@ -174,7 +182,9 @@ footer {
 }
 
 #logo {
-    margin-right: 4rem
+    margin-right: 2em;
+    display: flex;
+    align-items: center;
 }
 
 .footer-list {
