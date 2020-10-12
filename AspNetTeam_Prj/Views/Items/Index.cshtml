@@ -56,9 +56,13 @@
             @Html.DisplayFor(modelItem => item.User.fname)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.item_id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.item_id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.item_id })
+            @Html.ActionLink("Edit", "Edit", new { id = item.item_id }) |
+            <a href="@Url.Action("Detail","ItemDetail",new
+           {
+               item_id = item.item_id,
+               ShowAlreadyLikedModal = false
+           })"><p>Detail</p></a> |
+            @Html.ActionLink("Delete", "Delete", new { id = item.item_id })
         </td>
     </tr>
 }

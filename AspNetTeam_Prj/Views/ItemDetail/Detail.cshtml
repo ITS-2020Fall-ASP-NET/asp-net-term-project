@@ -3,17 +3,30 @@
     ViewBag.Title = "Detail";
     Layout = "~/Views/Shared/_Layout.cshtml";
     var item_id = Model.item_id;
+    var item = Model;
 }
 <h2>Detail</h2>
+
 <div>
-    @Html.DisplayFor(model => model)
-    @Html.ActionLink("Like", "Like", new
-    {
-        like_id = ViewBag.newLikeId,
-        user_id = 0,
-        item_id = item_id
-        })
-    @Html.ActionLink("Back to all items", "Index")
+    <h4>@Html.DisplayFor(model => model.name)</h4>
+    <h5>$@Html.DisplayFor(model => model.listing_price)</h5>
+    <p>@Html.DisplayFor(model => model.description)</p>
+    <h6>@Html.DisplayFor(model => model.Category1.category_name)</h6>
+    <img src="~/Content/img/item/@item.img_path" alt="Image" />
+    <p>Seller: @Html.DisplayFor(model => model.User.fname)</p>
+    <p><span class="badge badge-pill badge-secondary">@Html.DisplayFor(model => model.like_count)</span> people like this item</p>
+    <a href="@Url.Action("Like", new
+     {
+         like_id = ViewBag.newLikeId,
+         user_id = 0,
+         item_id = item_id
+     })">
+        <p class="btn btn-outline-dark">Like</p>
+    </a>
+
+    <a href="@Url.Action("Index","Items")">
+        <p class="btn btn-outline-dark">Back to all items</p>
+    </a>
 </div>
 @section scripts {
     <script>

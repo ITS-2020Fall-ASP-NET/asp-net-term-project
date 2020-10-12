@@ -21,7 +21,38 @@
                     <div class="logo"></div>
                     NeighTrade
                 </a>
+                <div id="sidebar_show_or_hide_btn">
+                    @{
+                        PageData["Title"] = "Passing Data";
+                        PageData["ShowList"] = true;
 
+                        if (IsPost)
+                        {
+                            if (Request.Form["list"] == "off")
+                            {
+                                PageData["ShowList"] = false;
+                            }
+                        }
+                    }
+                    @if (PageData["ShowList"] == true)
+                    {
+                        <form method="post" action="">
+                            <input class="navbar-toggler-icon" type="hidden" name="list" value="off" className="glyphicon glyphicon-plus"/>
+                            <input class="navbar-toggler-icon" type="submit" value=" " className="glyphicon glyphicon-plus" />
+                         </form>
+                    }
+                    else
+                    {
+                        <form method="post" action="">
+                            <input class="navbar-toggler-icon" type="hidden" name="list" value="on" />
+                            <input class="navbar-toggler-icon" type="submit" value=" " />
+                        </form>
+                    }
+                </div>
+                <a class="navbar-brand" id="logo" href="/Home/Index" style="display:flex;">
+                    <div class="logo"></div>
+                    NeighTrade
+                </a>
                 <form class="form-inline my-5 my-lg-0">
                     <input id="search-box" class="form-control" type="search" placeholder="Try with address or item name!" aria-label="Search">
                     <button id="search-btn" class="btn btn-secondary my-2 my-sm-0" type="submit">
@@ -39,7 +70,18 @@
         </nav>
     </header>
 
-    @RenderBody()
+    <div id="body_sidebar_and_content_flex_container">
+        @if (PageData["ShowList"] == true)
+        {
+            <div id="sidebar">
+                @RenderPage("_List.cshtml")
+            </div>
+        }
+
+        <div class="body_content_right">
+        @RenderBody()
+        </div>
+    </div>
 
     <footer>
         <div class="footer-container">
@@ -65,7 +107,6 @@
                 <p class="copyrightText">
                     <span class="copyrightSymbol">©</span>2020 NeighTrade All rights reserved.
                 </p> 
-            </div>
         </div>
     </footer>
 
