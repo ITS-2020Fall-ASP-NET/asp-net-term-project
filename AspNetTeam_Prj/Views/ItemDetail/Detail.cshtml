@@ -5,29 +5,53 @@
     var item_id = Model.item_id;
     var item = Model;
 }
-<h2>Detail</h2>
 
-<div>
-    <h4>@Html.DisplayFor(model => model.name)</h4>
-    <h5>$@Html.DisplayFor(model => model.listing_price)</h5>
-    <p>@Html.DisplayFor(model => model.description)</p>
-    <h6>@Html.DisplayFor(model => model.Category1.category_name)</h6>
-    <img src="~/Content/img/item/@item.img_path" alt="Image" />
-    <p>Seller: @Html.DisplayFor(model => model.User.fname)</p>
-    <p><span class="badge badge-pill badge-secondary">@Html.DisplayFor(model => model.like_count)</span> people like this item</p>
-    <a href="@Url.Action("Like", new
-     {
-         like_id = ViewBag.newLikeId,
-         user_id = 0,
-         item_id = item_id
-     })">
-        <p class="btn btn-outline-dark">Like</p>
-    </a>
+<article class="item-detail-container">
+    <section id="article-image-area">
+        <img src="~/Content/img/item/@item.img_path" alt="Image" />
+    </section>
+    <section id="article-profile">
+        <a id="article-profile-link" href="/users/10005691">
+            <div class="space-between">
+                <div class="space-between">
+                    <div id="article-profile-image">
+                        <img alt="@Html.DisplayFor(model => model.User.fname)" src="https://dnvefa72aowie.cloudfront.net/origin/profile/202003/814F75F1CE3243960227E75644F7C20066D9B5F943CFF1CCF5F811554D1BADC7.jpg?q=82&amp;s=640x640&amp;t=crop">
+                    </div>
+                    <div id="article-profile-left">
+                        <div id="nickname">@Html.DisplayFor(model => model.User.fname)</div>
+                        <div id="region-name">@Html.DisplayFor(model => model.User.Address1.CityLookup.city_name)</div>
+                    </div>
+                </div>
+                <div id="article-profile-right" hidden>
+                    Manner degree
+                </div>
+            </div>
+        </a>
+    </section>
+    <section id="article-description">
+        <h4>@Html.DisplayFor(model => model.name)</h4>
+        <h6>@Html.DisplayFor(model => model.Category1.category_name)</h6>
+        <h5>$@Html.DisplayFor(model => model.listing_price)</h5>
+        <p id="article-detail">@Html.DisplayFor(model => model.description)</p>
+        <p>
+            <span class="badge badge-pill badge-secondary">@Html.DisplayFor(model => model.like_count)</span>
+             people liked this item
+        </p>
+        <a href="@Url.Action("Like", new {
+             like_id = ViewBag.newLikeId,
+             user_id = 0,
+             item_id = item_id
+        })">
+            <p class="btn btn-outline-dark">Like</p>
+        </a>
 
-    <a href="@Url.Action("Index","Items")">
-        <p class="btn btn-outline-dark">Back to all items</p>
-    </a>
-</div>
+        <div>
+            <p class="btn btn-outline-dark" onclick="window.history.back()">Back to list</p>
+        </div>
+    </section>
+
+</article>
+
 @section scripts {
     <script>
         var ShowAlreadyLikedModal = @Html.Raw(Json.Encode(ViewBag.ShowAlreadyLikedModal));

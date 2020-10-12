@@ -1,0 +1,40 @@
+﻿@model IEnumerable<AspNetTeam_Prj.Models.Item>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="popular-items-container">
+
+    <h4>Popular items on market</h4>
+
+    @foreach (var item in Model) {
+        <article class="item-card">
+            <a class="article-link" href="/ItemDetail/Detail?item_id=@item.item_id&ShowAlreadyLikedModal=False">
+                <div class="card-photo">
+                    <img alt="@item.name" src="~/Content/img/item/@item.img_path">
+                </div>
+                <div class="article-info">
+                    <div class="article-title-content">
+                        <span class="article-title">@item.name</span>
+                    </div>
+
+                    <p class="article-region-name">
+                        @item.User.Address1.CityLookup.city_name
+                    </p>
+                    <p class="article-price ">
+                        $@item.listing_price
+                    </p>
+                    <section class="article-sub-info">
+                        <span class="article-watch">
+                            <img class="watch-icon" alt="Watch count" src="https://d1unjqcospf8gs.cloudfront.net/assets/home/base/like-8111aa74d4b1045d7d5943a901896992574dd94c090cef92c26ae53e8da58260.svg">
+                            @item.like_count
+                        </span>
+                    </section>
+                </div>
+            </a>
+        </article>
+    }
+</div>
+

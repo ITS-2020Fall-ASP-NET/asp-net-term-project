@@ -138,6 +138,7 @@
     <Compile Include="Controllers\ItemDetailController.cs" />
     <Compile Include="Controllers\ItemsController.cs" />
     <Compile Include="Controllers\likesController.cs" />
+    <Compile Include="Controllers\PopularController.cs" />
     <Compile Include="Controllers\PostAdController.cs" />
     <Compile Include="Controllers\SignInController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
@@ -274,6 +275,7 @@
     <Content Include="Views\likes\Index.cshtml" />
     <Content Include="Views\SignIn\Index.cshtml" />
     <Content Include="Views\Shared\_List.cshtml" />
+    <Content Include="Views\Popular\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

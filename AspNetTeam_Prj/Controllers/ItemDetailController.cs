@@ -38,7 +38,7 @@ namespace AspNetTeam_Prj.Controllers
                     db.SaveChanges();
                     return RedirectToAction("Detail", "ItemDetail", new { item_id = like.item_id, ShowAlreadyLikedModal = false });
                 }
-            }catch(DbUpdateException e)
+            } catch (DbUpdateException e)
             {
                 return RedirectToAction("Detail", "ItemDetail", new { item_id = like.item_id, ShowAlreadyLikedModal = true });
             }
