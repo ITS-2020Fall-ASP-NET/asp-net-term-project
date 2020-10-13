@@ -5,6 +5,12 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="DatabaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="__RefactorLog">
+          <Key>
+            <PropertyRef Name="OperationKey" />
+          </Key>
+          <Property Name="OperationKey" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
         <EntityType Name="Address">
           <Key>
             <PropertyRef Name="address_id" />
@@ -45,7 +51,7 @@
           <Key>
             <PropertyRef Name="item_id" />
           </Key>
-          <Property Name="item_id" Type="int" Nullable="false" />
+          <Property Name="item_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="user_id" Type="int" />
           <Property Name="name" Type="nvarchar" MaxLength="50" />
           <Property Name="listing_price" Type="decimal" Precision="18" Scale="0" />
@@ -93,7 +99,7 @@
           <Property Name="reputation" Type="decimal" Precision="18" Scale="0" />
           <Property Name="address" Type="int" />
         </EntityType>
-        <Association Name="FK__Comment__item_id__59FA5E80">
+        <Association Name="FK__Comment__item_id__02FC7413">
           <End Role="Item" Type="Self.Item" Multiplicity="0..1" />
           <End Role="Comment" Type="Self.Comment" Multiplicity="*" />
           <ReferentialConstraint>
@@ -105,7 +111,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Item__category__59063A47">
+        <Association Name="FK__Item__category__05D8E0BE">
           <End Role="Category" Type="Self.Category" Multiplicity="0..1" />
           <End Role="Item" Type="Self.Item" Multiplicity="*" />
           <ReferentialConstraint>
@@ -117,7 +123,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Item__user_id__5812160E">
+        <Association Name="FK__Item__user_id__04E4BC85">
           <End Role="User" Type="Self.User" Multiplicity="0..1" />
           <End Role="Item" Type="Self.Item" Multiplicity="*" />
           <ReferentialConstraint>
@@ -238,6 +244,7 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="DatabaseModelStoreContainer">
+          <EntitySet Name="__RefactorLog" EntityType="Self.__RefactorLog" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Address" EntityType="Self.Address" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CityLookup" EntityType="Self.CityLookup" Schema="dbo" store:Type="Tables" />
@@ -247,15 +254,15 @@
           <EntitySet Name="StateLookup" EntityType="Self.StateLookup" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Transaction" EntityType="Self.Transaction" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__Comment__item_id__59FA5E80" Association="Self.FK__Comment__item_id__59FA5E80">
+          <AssociationSet Name="FK__Comment__item_id__02FC7413" Association="Self.FK__Comment__item_id__02FC7413">
             <End Role="Item" EntitySet="Item" />
             <End Role="Comment" EntitySet="Comment" />
           </AssociationSet>
-          <AssociationSet Name="FK__Item__category__59063A47" Association="Self.FK__Item__category__59063A47">
+          <AssociationSet Name="FK__Item__category__05D8E0BE" Association="Self.FK__Item__category__05D8E0BE">
             <End Role="Category" EntitySet="Category" />
             <End Role="Item" EntitySet="Item" />
           </AssociationSet>
-          <AssociationSet Name="FK__Item__user_id__5812160E" Association="Self.FK__Item__user_id__5812160E">
+          <AssociationSet Name="FK__Item__user_id__04E4BC85" Association="Self.FK__Item__user_id__04E4BC85">
             <End Role="User" EntitySet="User" />
             <End Role="Item" EntitySet="Item" />
           </AssociationSet>
@@ -327,12 +334,12 @@
           <Property Name="listing_price" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="category" Type="Int32" />
-          <Property Name="like_count" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="like_count" Type="String" MaxLength="10" FixedLength="true" Unicode="true" DefaultValue="0" />
           <NavigationProperty Name="Category1" Relationship="Self.FK__Item__category__31EC6D26" FromRole="Item" ToRole="Category" />
           <NavigationProperty Name="Comments" Relationship="Self.FK__Comment__item_id__2E1BDC42" FromRole="Item" ToRole="Comment" />
           <NavigationProperty Name="User" Relationship="Self.FK__Item__user_id__36B12243" FromRole="Item" ToRole="User" />
           <NavigationProperty Name="Transactions" Relationship="Self.FK_Transaction_Item" FromRole="Item" ToRole="Transaction" />
-          <Property Name="img_path" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="img_path" Type="String" MaxLength="50" FixedLength="false" Unicode="true" DefaultValue="default.jpg" />
           <NavigationProperty Name="likes" Relationship="DatabaseModel.FK_Like_item_id" FromRole="Item" ToRole="like" />
         </EntityType>
         <EntityType Name="Transaction">
@@ -497,6 +504,7 @@
             <End Role="Item" EntitySet="Items" />
             <End Role="like" EntitySet="likes" />
           </AssociationSet>
+          <EntitySet Name="C__RefactorLog" EntityType="DatabaseModel.C__RefactorLog" />
         </EntityContainer>
         <EntityType Name="Address">
           <Key>
@@ -615,6 +623,12 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="C__RefactorLog">
+          <Key>
+            <PropertyRef Name="OperationKey" />
+          </Key>
+          <Property Name="OperationKey" Type="Guid" Nullable="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -715,6 +729,13 @@
                 <ScalarProperty Name="item_id" ColumnName="item_id" />
                 <ScalarProperty Name="user_id" ColumnName="user_id" />
                 <ScalarProperty Name="like_id" ColumnName="like_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="C__RefactorLog">
+            <EntityTypeMapping TypeName="DatabaseModel.C__RefactorLog">
+              <MappingFragment StoreEntitySet="__RefactorLog">
+                <ScalarProperty Name="OperationKey" ColumnName="OperationKey" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

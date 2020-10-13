@@ -12,9 +12,8 @@
     @foreach (var item in Model) {
         <article class="item-card">
             <a class="article-link" href="/ItemDetail/Detail?item_id=@item.item_id&ShowAlreadyLikedModal=False">
-                <div class="card-photo">
-                    <img alt="@item.name" src="~/Content/img/item/@item.img_path">
-                </div>
+                <div class="card-photo" style="background: url('/Content/img/item/@item.img_path');background-size: cover;"></div>
+
                 <div class="article-info">
                     <div class="article-title-content">
                         <span class="article-title">@item.name</span>

@@ -231,7 +231,11 @@ footer {
 }
 
 .button-sign-in {
-	margin-left: 4rem;
+	margin-left: 4em;
+}
+
+.button-post-ad {
+	margin-left: 1em;
 }
 
 #logo {
@@ -344,7 +348,7 @@ footer {
 	font-weight: 600;
 	color: #212529;
 	font-size: 16px;
-	line-height: 18px;
+	line-height: 22px;
 	margin-top: 10px;
 	white-space: nowrap;
 	overflow: hidden;
@@ -392,6 +396,8 @@ footer {
 #article-image-area img {
 	display: block;
 	margin: 0 auto;
+	max-width: 729px;
+	border-radius: 5px;
 }
 
 #article-profile .space-between {
@@ -453,4 +459,23 @@ footer {
 
 #article-detail {
 	margin: 30px 0;
+}
+
+/*
+	Post ad
+*/
+.post-ad-container {
+	background: #FFFFFF;
+	border-radius: 5px;
+	border: 1px solid #EEEEEE;
+	width: 800px;
+	min-height: 600px;
+	margin: 30px auto;
+	padding: 35px;
+}
+
+#img-preview {
+	width: 728px;
+	border-radius: 5px;
+	margin: 10px 0;
 }

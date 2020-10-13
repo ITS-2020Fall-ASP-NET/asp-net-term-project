@@ -1,0 +1,70 @@
+﻿@model IEnumerable<AspNetTeam_Prj.Models.Address>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Address1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Address2)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Address3)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Country)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PostalCode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CityLookup.city_name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StateLookup.state_name)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Address1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Address2)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Address3)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Country)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PostalCode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CityLookup.city_name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StateLookup.state_name)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.address_id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.address_id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.address_id })
+        </td>
+    </tr>
+}
+
+</table>

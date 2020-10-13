@@ -11,12 +11,15 @@ namespace AspNetTeam_Prj.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.Web;
+
     public partial class Item
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Item()
         {
+            this.like_count = "0";
+            this.img_path = "default.jpg";
             this.Comments = new HashSet<Comment>();
             this.Transactions = new HashSet<Transaction>();
             this.likes = new HashSet<like>();
@@ -30,7 +33,8 @@ namespace AspNetTeam_Prj.Models
         public Nullable<int> category { get; set; }
         public string like_count { get; set; }
         public string img_path { get; set; }
-    
+        public HttpPostedFileBase img_file { get; set; }
+
         public virtual Category Category1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Comment> Comments { get; set; }

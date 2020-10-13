@@ -1,7 +1,73 @@
-﻿
+﻿@model AspNetTeam_Prj.Models.Item
+
 @{
-    ViewBag.Title = "PostAd";
+    ViewBag.Title = "Post Ad";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>PostAd</h2>
+@Scripts.Render("~/Scripts/main.js")
+
+@using (Html.BeginForm("Create", "PostAd", FormMethod.Post, new {
+    enctype = "multipart/form-data"
+})) {
+    @Html.AntiForgeryToken()
+
+<div class="post-ad-container">
+    <div class="form-horizontal">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.user_id, "user_id", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div>
+                @Html.DropDownList("user_id", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.user_id, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.name, "Ad title", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div>
+                @Html.EditorFor(model => model.name, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.name, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.category, "category", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div>
+                @Html.DropDownList("category", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.category, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.listing_price, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div>
+                @Html.EditorFor(model => model.listing_price, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.listing_price, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.description, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div>
+                @Html.EditorFor(model => model.description, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.description, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <!-- Image upload -->
+        <div class="btn btn-info" id="btn-select-img">Select image</div>
+        <input type='file' id="imgInp" name="img_file" hidden />
+        <p style="text-align: center;">
+            <img id="img-preview" src="#" alt="your image" accept="image/*" />
+            <input id="img-path" type="text" name="img_path" value="" hidden>
+        </p>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Post" class="btn btn-success" />
+            </div>
+        </div>
+    </div>
+</div>
+}

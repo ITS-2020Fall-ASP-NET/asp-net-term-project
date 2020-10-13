@@ -34,5 +34,6 @@ namespace AspNetTeam_Prj.Models
         public virtual DbSet<CityLookup> CityLookups { get; set; }
         public virtual DbSet<StateLookup> StateLookups { get; set; }
         public virtual DbSet<like> likes { get; set; }
+        public virtual DbSet<C__RefactorLog> C__RefactorLog { get; set; }
     }
 }
