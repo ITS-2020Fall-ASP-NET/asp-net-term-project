@@ -25,7 +25,8 @@ VALUES (Address1, Address2, Address3, City, State, Country, PostalCode);
 /* Test user */
 MERGE INTO [dbo].[User] AS Target
 USING (VALUES 
-        (0, 'Hansol', 'Jo', '12341234', 'hansol.jo@gmail.com', 0, 0)
+        (0, 'Hansol', 'Jo', '12341234', 'hansol.jo@gmail.com', 0, 0),
+        (1, 'Sara', 'Chen', '12341234', 'sarachen0712@gmail.com', 0, 0)
 )
 AS Source (user_id, fname, lname, passwd, email, reputation, address)
 ON Target.user_id = Source.user_id

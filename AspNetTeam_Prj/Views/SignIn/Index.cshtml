@@ -1,4 +1,5 @@
-﻿
+﻿@model AspNetTeam_Prj.Models.User
+
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -6,27 +7,39 @@
 
 <div class="container" id="sign-in-container">
     <p id="sign-in-title">Sign In</p>
-    <form>
+    <span class="alert-danger">@ViewBag.Message</span>
+
+    @using (Html.BeginForm("SignIn", "SignIn", FormMethod.Post)) {
+        @Html.AntiForgeryToken()
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
-            <label for="exampleInputEmail1">Email address</label>
-            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+            <label for="email-address">Email address</label>
+            @Html.TextBoxFor(a => a.email, htmlAttributes: new { @class = "form-control", @id = "email-address" })
+            @Html.ValidationMessageFor(a => a.email)
             <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
         </div>
         <div class="form-group">
-            <label for="exampleInputPassword1">Password</label>
-            <input type="password" class="form-control" id="exampleInputPassword1">
+            <label for="password">Password</label>
+            @Html.PasswordFor(a => a.passwd, htmlAttributes: new { @class = "form-control", @id = "password" })
+            @Html.ValidationMessageFor(a => a.passwd)
         </div>
         <div class="form-group form-check">
             <input type="checkbox" class="form-check-input" id="exampleCheck1">
             <label class="form-check-label" for="exampleCheck1">Remeber me</label>
         </div>
+
         <button type="submit" class="btn btn-outline-primary">Sign In</button>
+
         <hr />
+
         <div style="text-align: center;">
-            <p>Not registered yet?<br />
-            Register now to post, edit, and manage ads. It’s quick, easy, and free!</p>
+            <p>
+                Not registered yet?<br />
+                Register now to post, edit, and manage ads. It’s quick, easy, and free!
+            </p>
             <a type="submit" class="btn btn-dark" href="/Users/Create">Register</a>
         </div>
-    </form>
+    }
 </div>
 
