@@ -19,8 +19,11 @@ namespace AspNetTeam_Prj.Controllers
         // GET: PostAd
         public ActionResult Index()
         {
+            if (Session["UserId"] == null) {
+                return RedirectToAction("Index", "SignIn", new { nextAction = "Index", nextController = "PostAd" });
+            }
+
             ViewBag.category = new SelectList(db.Categories, "category_id", "category_name");
-            ViewBag.user_id = new SelectList(db.Users, "user_id", "fname");
             return View();
         }
 
