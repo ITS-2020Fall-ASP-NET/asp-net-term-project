@@ -6,7 +6,7 @@ using System.Web;
 
 namespace NeighTrade.DAL
 {
-    public class DataInitializer : System.Data.Entity.DropCreateDatabaseAlways<NeighTradeContext>
+    public class DataInitializer : System.Data.Entity.DropCreateDatabaseIfModelChanges<NeighTradeContext>
     {
         protected override void Seed(NeighTradeContext context) {
             // address
