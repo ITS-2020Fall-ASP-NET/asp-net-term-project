@@ -3,13 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30523.141
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNetTeam_Prj", "AspNetTeam_Prj\AspNetTeam_Prj.csproj", "{B324F1B7-671D-4728-8E74-9C708673DB12}"
-	ProjectSection(ProjectDependencies) = postProject
-		{92CA7C7E-26BB-4BFD-9E54-EA7BB585D039} = {92CA7C7E-26BB-4BFD-9E54-EA7BB585D039}
-	EndProjectSection
-EndProject
-Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "Database", "Database\Database.sqlproj", "{92CA7C7E-26BB-4BFD-9E54-EA7BB585D039}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NeighTrade", "NeighTrade\NeighTrade.csproj", "{C4EFC126-BFD0-4A9C-89A8-311F2421EE81}"
 EndProject
 Global
@@ -18,16 +11,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{B324F1B7-671D-4728-8E74-9C708673DB12}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B324F1B7-671D-4728-8E74-9C708673DB12}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B324F1B7-671D-4728-8E74-9C708673DB12}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B324F1B7-671D-4728-8E74-9C708673DB12}.Release|Any CPU.Build.0 = Release|Any CPU
-		{92CA7C7E-26BB-4BFD-9E54-EA7BB585D039}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{92CA7C7E-26BB-4BFD-9E54-EA7BB585D039}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{92CA7C7E-26BB-4BFD-9E54-EA7BB585D039}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
-		{92CA7C7E-26BB-4BFD-9E54-EA7BB585D039}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{92CA7C7E-26BB-4BFD-9E54-EA7BB585D039}.Release|Any CPU.Build.0 = Release|Any CPU
-		{92CA7C7E-26BB-4BFD-9E54-EA7BB585D039}.Release|Any CPU.Deploy.0 = Release|Any CPU
 		{C4EFC126-BFD0-4A9C-89A8-311F2421EE81}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{C4EFC126-BFD0-4A9C-89A8-311F2421EE81}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C4EFC126-BFD0-4A9C-89A8-311F2421EE81}.Release|Any CPU.ActiveCfg = Release|Any CPU

@@ -30,7 +30,7 @@ namespace NeighTrade.DAL
             {
             new User {
                 Email="hansol.jo@gmail.com",
-                Password="temp1234!",
+                Password="12341234",
                 Fname="Hansol",
                 Lname="Jo",
                 Reputation=0,
