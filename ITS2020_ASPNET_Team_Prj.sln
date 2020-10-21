@@ -10,6 +10,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNetTeam_Prj", "AspNetTea
 EndProject
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "Database", "Database\Database.sqlproj", "{92CA7C7E-26BB-4BFD-9E54-EA7BB585D039}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NeighTrade", "NeighTrade\NeighTrade.csproj", "{C4EFC126-BFD0-4A9C-89A8-311F2421EE81}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -26,6 +28,10 @@ Global
 		{92CA7C7E-26BB-4BFD-9E54-EA7BB585D039}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{92CA7C7E-26BB-4BFD-9E54-EA7BB585D039}.Release|Any CPU.Build.0 = Release|Any CPU
 		{92CA7C7E-26BB-4BFD-9E54-EA7BB585D039}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{C4EFC126-BFD0-4A9C-89A8-311F2421EE81}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C4EFC126-BFD0-4A9C-89A8-311F2421EE81}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C4EFC126-BFD0-4A9C-89A8-311F2421EE81}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C4EFC126-BFD0-4A9C-89A8-311F2421EE81}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,0 +1,60 @@
+﻿@model NeighTrade.Models.Item
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var item_id = Model.ItemId;
+    var item = Model;
+}
+
+<article class="item-detail-container">
+    <section id="article-image-area">
+        <img src="~/Content/img/item/@item.ImgPath" alt="Image" />
+    </section>
+    <section id="article-profile">
+        <a id="article-profile-link" href="/users/10005691">
+            <div class="space-between">
+                <div class="space-between">
+                    <div id="article-profile-image">
+                        <img alt="@Html.DisplayFor(model => model.User.Fname)" src="~/Content/img/item/375682.jpg">
+                    </div>
+                    <div id="article-profile-left">
+                        <div id="nickname">@Html.DisplayFor(model => model.User.Fname)</div>
+                        <div id="region-name">@Html.DisplayFor(model => model.User.Address.City)</div>
+                    </div>
+                </div>
+                <div id="article-profile-right" hidden>
+                    Manner degree
+                </div>
+            </div>
+        </a>
+    </section>
+    <section id="article-description">
+        <h4>@Html.DisplayFor(model => model.Name)</h4>
+        <h6>@Html.DisplayFor(model => model.Category)</h6>
+        <h5>$@Html.DisplayFor(model => model.ListingPrice)</h5>
+        <p id="article-detail">@Html.DisplayFor(model => model.Description)</p>
+        <p>
+            <span class="badge badge-pill badge-secondary">@Html.DisplayFor(model => model.LikeCount)</span>
+             people liked this item
+        </p>
+        <a href="@Url.Action("Like", new {
+             LikeId = ViewBag.newLikeId,
+             UserId = 0,
+             ItemId = item_id
+        })">
+            <p class="btn btn-outline-dark">Like</p>
+        </a>
+
+        <div>
+            <p class="btn btn-outline-dark" onclick="window.history.back()">Back to list</p>
+        </div>
+    </section>
+
+</article>
+
+@section scripts {
+    <script>
+        var ShowAlreadyLikedModal = @Html.Raw(Json.Encode(ViewBag.ShowAlreadyLikedModal));
+        if (ShowAlreadyLikedModal == true) alert('You already liked this item');
+    </script>
+}

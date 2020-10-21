@@ -1,9 +1,4 @@
-AspNetTeam_Prj/bin
-AspNetTeam_Prj/obj
-Database/bin
-Database/obj
-Database/Database.dbmdl
-Database/Database.jfm
+NeighTrade/bin
+NeighTrade/obj
 
-.vs/ITS2020_ASPNET_Team_Prj/config/applicationhost.config
 *.suo

@@ -1,0 +1,115 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - NeighTrade</title>
+
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+    <link rel="shortcut icon" type="image/png" href="~/Content/img/favicon.png">
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</head>
+
+<body>
+
+    <header>
+        <nav class="navbar fixed-top navbar-light">
+            <div class="container" id="nav-container">
+                <!--div id="sidebar_show_or_hide_btn">
+                    @{
+                        PageData["Title"] = "Passing Data";
+                        PageData["ShowList"] = true;
+
+                        if (IsPost)
+                        {
+                            if (Request.Form["list"] == "off")
+                            {
+                                PageData["ShowList"] = false;
+                            }
+                        }
+                    }
+                    @if (PageData["ShowList"] == true)
+                    {
+                        <form method="post" action="">
+                            <input class="navbar-toggler-icon" type="hidden" name="list" value="off" className="glyphicon glyphicon-plus"/>
+                            <input class="navbar-toggler-icon" type="submit" value=" " className="glyphicon glyphicon-plus" />
+                         </form>
+                    }
+                    else
+                    {
+                        <form method="post" action="">
+                            <input class="navbar-toggler-icon" type="hidden" name="list" value="on" />
+                            <input class="navbar-toggler-icon" type="submit" value=" " />
+                        </form>
+                    }
+                </div-->
+
+                <a class="navbar-brand" id="logo" href="/Home/Index" style="display:flex;">
+                    <div class="logo"></div>
+                    NeighTrade
+                </a>
+                <form class="form-inline my-5 my-lg-0">
+                    <input id="search-box" class="form-control" type="search" placeholder="Try with address or item name!" aria-label="Search">
+                    <button id="search-btn" class="btn btn-secondary my-2 my-sm-0" type="submit">
+                        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-search" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" d="M10.442 10.442a1 1 0 0 1 1.415 0l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1 1 0 0 1 0-1.415z" />
+                            <path fill-rule="evenodd" d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zM13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z" />
+                        </svg>
+                    </button>
+                </form>
+
+                <span class="button-post-ad">
+                    <a class="btn btn-dark" href="/PostAd/Index">Post Ad</a>
+                </span>
+
+                <div class="account-area">
+                    @if (Session["UserName"] != null) {
+                        <span>@Session["UserName"].ToString()</span>
+                        <a class="btn btn-info" href="/SignIn/SignOut">Sign Out</a>
+                    } else {
+                        <span class="button-sign-in">
+                            <a class="btn btn-info" href="/SignIn/Index">Sign In</a>
+                        </span>
+                    }
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    @RenderBody()
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-top">
+                <ul class="footer-list">
+                    <li class="footer-list-item"><a class="link-highlight" href="#">Footer Link</a></li>
+                    <li class="footer-list-item"><a class="link-highlight" href="#">Footer Link</a></li>
+                    <li class="footer-list-item"><a class="link-highlight" href="#">Footer Link</a></li>
+                </ul>
+                <ul class="footer-list">
+                    <li class="footer-list-item"><a href="#">Footer Link</a></li>
+                    <li class="footer-list-item"><a href="#">Footer Link</a></li>
+                    <li class="footer-list-item"><a href="#">Footer Link</a></li>
+                </ul>
+                <ul class="footer-list">
+                    <li class="footer-list-item"><a href="#">Support</a></li>
+                    <li class="footer-list-item"><a href="#">Help Desk</a></li>
+                    <li class="footer-list-item"><a href="#">Terms of Use</a></li>
+                </ul>
+            </div>
+
+            <div class="copyright">
+                <p class="copyrightText">
+                    <span class="copyrightSymbol">©</span>2020 NeighTrade All rights reserved.
+                </p>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
