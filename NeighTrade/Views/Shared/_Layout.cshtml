@@ -69,11 +69,19 @@
 
                 <div class="account-area">
                     @if (Session["UserName"] != null) {
-                        <span>@Session["UserName"].ToString()</span>
-                        <a class="btn btn-info" href="/SignIn/SignOut">Sign Out</a>
+                        <div class="btn-group">
+                            <button type="button" id="account-btn" class="btn btn-outline-success" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                @Session["UserName"].ToString()[0]
+                            </button>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="#">My Account</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="/SignIn/SignOut">Sign Out</a>
+                            </div>
+                        </div>
                     } else {
                         <span class="button-sign-in">
-                            <a class="btn btn-info" href="/SignIn/Index">Sign In</a>
+                            <a class="btn btn-outline-info" href="/SignIn/Index">Sign In</a>
                         </span>
                     }
                 </div>

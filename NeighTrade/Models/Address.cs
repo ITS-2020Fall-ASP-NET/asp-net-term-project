@@ -14,8 +14,7 @@ namespace NeighTrade.Models
 
     public class Address
     {
-        /*
-        public static readonly IList<string> CITIES = new ReadOnlyCollection<string>(
+        public static readonly IList<string> Cities = new ReadOnlyCollection<string>(
         new List<string> {
             "Barrie",
             "Belleville",
@@ -73,7 +72,6 @@ namespace NeighTrade.Models
             "Oakville",
             "Whitby"
         });
-        */
 
         public int AddressId { get; set; }
         public string Address1 { get; set; }

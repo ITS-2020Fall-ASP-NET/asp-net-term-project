@@ -62,7 +62,10 @@ namespace NeighTrade.Models
         public int UserId { get; set; }
         public string Name { get; set; }
         public decimal ListingPrice { get; set; }
+
+        [DataType(DataType.MultilineText)]
         public string Description { get; set; }
+
         public Category Category { get; set; }
         public int LikeCount { get; set; }
         public string ImgPath { get; set; }

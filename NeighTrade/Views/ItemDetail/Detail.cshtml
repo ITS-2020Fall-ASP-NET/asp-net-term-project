@@ -10,6 +10,7 @@
     <section id="article-image-area">
         <img src="~/Content/img/item/@item.ImgPath" alt="Image" />
     </section>
+
     <section id="article-profile">
         <a id="article-profile-link" href="/users/10005691">
             <div class="space-between">
@@ -28,11 +29,14 @@
             </div>
         </a>
     </section>
+
     <section id="article-description">
         <h4>@Html.DisplayFor(model => model.Name)</h4>
         <h6>@item.CategoryName</h6>
         <h5>$@Html.DisplayFor(model => model.ListingPrice)</h5>
-        <p id="article-detail">@Html.DisplayFor(model => model.Description)</p>
+        <p id="article-detail">
+            <span style="white-space: pre-line">@Html.DisplayFor(model => model.Description)</span>
+        </p>
         <p>
             <span class="badge badge-pill badge-secondary">@Html.DisplayFor(model => model.LikeCount)</span>
              people liked this item
