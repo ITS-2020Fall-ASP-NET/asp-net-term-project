@@ -20,6 +20,15 @@ namespace NeighTrade.DAL
                 State=State.ON,
                 Country="CA",
                 PostalCode="L6M3C4"
+            },
+            new Address {
+                Address1="2132 Rainbow Pl.",
+                Address2="",
+                Address3="",
+                City="Vaughan",
+                State=State.ON,
+                Country="CA",
+                PostalCode="L1M2C3"
             }
             };
             addresses.ForEach(a => context.Addresses.Add(a));
@@ -35,6 +44,14 @@ namespace NeighTrade.DAL
                 Lname="Jo",
                 Reputation=0,
                 AddressId=1
+            },
+            new User {
+                Email="sarachen0712@gmail.com",
+                Password="12341234",
+                Fname="Sara",
+                Lname="Chen",
+                Reputation=0,
+                AddressId=2
             }
             };
             users.ForEach(u => context.Users.Add(u));
