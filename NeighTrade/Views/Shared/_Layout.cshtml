@@ -74,7 +74,9 @@
                                 @Session["UserName"].ToString()[0]
                             </button>
                             <div class="dropdown-menu">
-                                <a class="dropdown-item" href="#">My Account</a>
+                                <a class="dropdown-item" href="/Users/Details/@Session["UserId"]">My Account</a>
+                                <a class="dropdown-item" href="/Likes/UserItems/@Session["UserId"]">My Items</a>
+                                <a class="dropdown-item" href="/Likes/UserLikes/@Session["UserId"]">My Liked Items</a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="/SignIn/SignOut">Sign Out</a>
                             </div>

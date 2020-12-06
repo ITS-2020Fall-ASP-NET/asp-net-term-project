@@ -43,14 +43,14 @@
         </p>
         <a href="@Url.Action("Like", new {
              LikeId = ViewBag.newLikeId,
-             UserId = 0,
+             UserId = Session["UserID"],
              ItemId = item_id
         })">
             <p class="btn btn-outline-dark">Like</p>
         </a>
 
         <div>
-            <p class="btn btn-outline-dark" onclick="window.history.back()">Back to list</p>
+            <p class="btn btn-outline-dark" onclick="window.history.back()">Back</p>
         </div>
     </section>
 

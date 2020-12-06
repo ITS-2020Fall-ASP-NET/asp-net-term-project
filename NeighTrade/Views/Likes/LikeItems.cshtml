@@ -1,0 +1,31 @@
+﻿@model NeighTrade.Models.Item
+
+@{
+    Layout = null;
+}
+
+
+            <td>
+                @Html.ActionLink(Model.User.Email, "Details", "Users", new { id=Model.User.UserId }, null)
+            </td>
+    
+            <td>
+                @Html.ActionLink(Model.Name, "Detail","ItemDetail",new { item_id=Model.ItemId, ShowAlreadyLikedModal=false },null)
+            </td>
+    
+            <td>
+                @Html.DisplayFor(model => model.ListingPrice)
+            </td>
+    
+            <td>
+                @Html.DisplayFor(model => model.Description)
+            </td>
+    
+            <td>
+                @Html.DisplayFor(model => model.Category)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.LikeCount)
+            </td>
+
+

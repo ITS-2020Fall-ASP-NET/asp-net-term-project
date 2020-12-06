@@ -1,0 +1,13 @@
+﻿@model NeighTrade.Models.User
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Hello @Session["UserName"]</h2>
+
+<div>
+    <h4></h4>
+    <hr />
+    @{Html.RenderAction("Index", "Likes", new { UserId = Model.UserId }); }
+</div>

@@ -16,9 +16,10 @@ namespace NeighTrade.Controllers
         private NeighTradeContext db = new NeighTradeContext();
 
         // GET: Likes
-        public ActionResult Index()
+        public ActionResult Index(int UserId)
         {
-            return View(db.Likes.ToList());
+            var likes = db.Likes.Where(like => like.UserId == UserId);
+            return View(likes.ToList());
         }
 
         // GET: Likes/Details/5
@@ -34,6 +35,35 @@ namespace NeighTrade.Controllers
                 return HttpNotFound();
             }
             return View(like);
+        }
+        public ActionResult LikeItems(int item_id)
+        {
+            var item = db.Items.Where(i => i.ItemId == item_id);
+            return View(item.ToList()[0]);
+        }
+
+        public ActionResult UserLikes(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            User user = db.Users.Find(id);
+            if (user == null)
+            {
+                return HttpNotFound();
+            }
+            return View(user);
+        }
+
+        public ActionResult UserItems(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            var items = db.Items.Where(i => i.UserId == id);
+            return View(items.ToList());
         }
 
         // GET: Likes/Create
@@ -113,7 +143,7 @@ namespace NeighTrade.Controllers
             Like like = db.Likes.Find(id);
             db.Likes.Remove(like);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("Details", "Users", new { id = Session["UserID"] });
         }
 
         protected override void Dispose(bool disposing)

@@ -2,38 +2,24 @@
 
 @{
     ViewBag.Title = "Index";
+    Layout = "";
 }
 
-<h2>Index</h2>
+<h2>All My Likes</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+
 <table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.UserId)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ItemId)
-        </th>
-        <th></th>
-    </tr>
 
-@foreach (var item in Model) {
     <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.UserId)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ItemId)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.LikeId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.LikeId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.LikeId })
-        </td>
+        <th>Seller</th><th>Item Name</th><th>Price</th><th>Detail</th><th>Category</th><th>Like</th>
     </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            @{ Html.RenderAction("LikeItems", "Likes", new { item_id = item.ItemId, ShowAlreadyLikedModal = false });}
+            <td>@Html.ActionLink("Unlike", "Delete", new { id = item.LikeId })</td>
+        </tr>
+
+    }
 
 </table>
