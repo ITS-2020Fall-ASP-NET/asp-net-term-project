@@ -13,6 +13,10 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
 </head>
 
 <body>
@@ -77,6 +81,7 @@
                                 <a class="dropdown-item" href="/Users/Details/@Session["UserId"]">My Account</a>
                                 <a class="dropdown-item" href="/Likes/UserItems/@Session["UserId"]">My Items</a>
                                 <a class="dropdown-item" href="/Likes/UserLikes/@Session["UserId"]">My Liked Items</a>
+                                <a class="dropdown-item" href="/Transactions/UserTransactions/@Session["UserId"]">My Orders</a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="/SignIn/SignOut">Sign Out</a>
                             </div>

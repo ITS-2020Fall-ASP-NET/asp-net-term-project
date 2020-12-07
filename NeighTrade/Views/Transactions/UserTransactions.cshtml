@@ -1,0 +1,87 @@
+﻿@model IEnumerable<NeighTrade.Models.Transaction>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+@section Scripts {
+
+
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.datepicker').datepicker({
+                dateFormat: "dd/M/yy",
+                yearRange: "-0:+10",
+                numberOfMonths: 4,
+                showButtonPanel: false,
+                autohide: true,
+                showAnim: "slideDown"
+            });
+            $('.text-box').val(" ");
+        });
+    </script>
+}
+
+<h3 class="text-center m-lg-5">My Orders</h3>
+<table class="table">
+    <tr>
+        <th>
+            Seller
+        </th>
+        <th>
+            Item
+        </th>
+        <th>
+            Price
+        </th>
+        <th>
+            Description
+        </th>
+        <th>
+            Category
+        </th>
+        <th>
+            Likes
+        </th>
+        <th>Cancel</th>
+        <th>Book a delivery</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+
+
+            @{Html.RenderAction("LikeItems", "Likes", new { item_id = item.ItemId });
+            }
+            <td>
+                @Html.ActionLink("Cancel", "Delete", new { id = item.TransactionId })
+            </td>
+            <td>
+                @using (Html.BeginForm("Delivery", "Transactions", FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+                    <div class="form-horizontal">
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        <div class="form-group">
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => item.Date, new { htmlAttributes = new { @class = "form-control datepicker", @id=item.Date} })
+                                @Html.ValidationMessageFor(model => item.Date, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <input type="submit" value="Confirm" class="btn btn-primary" />
+                            </div>
+                        </div>
+                    </div>
+                }
+            </td>
+        </tr>
+    }
+
+</table>
+
+
+

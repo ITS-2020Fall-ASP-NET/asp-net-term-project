@@ -22,5 +22,6 @@ namespace NeighTrade.DAL
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
         }
 
+        public System.Data.Entity.DbSet<NeighTrade.Models.Transaction> Transactions { get; set; }
     }
 }

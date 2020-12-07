@@ -1,0 +1,81 @@
+﻿@model NeighTrade.Models.Transaction
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title class="text-lg-center">Calcel Order</title>
+</head>
+<body>
+    <center>
+        <h3>Are you sure you want to delete this transaction?</h3>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.BuyerId)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.BuyerId)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.SellerId)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.SellerId)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.ItemId)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ItemId)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Price)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Price)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Date)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Date)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Status)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Status)
+            </dd>
+
+        </dl>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                <input type="submit" value="Delete" class="btn btn-primary" /> |
+                @Html.ActionLink("Back to List", "UserTransactions","Transactions",new {id=Session["UserID"] }, null)
+            </div>
+        }
+    </center>
+</body>
+</html>

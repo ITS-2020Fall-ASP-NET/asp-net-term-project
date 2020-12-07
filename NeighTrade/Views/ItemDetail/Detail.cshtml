@@ -39,7 +39,7 @@
         </p>
         <p>
             <span class="badge badge-pill badge-secondary">@Html.DisplayFor(model => model.LikeCount)</span>
-             people liked this item
+            people liked this item
         </p>
         <a href="@Url.Action("Like", new {
              LikeId = ViewBag.newLikeId,
@@ -48,7 +48,17 @@
         })">
             <p class="btn btn-outline-dark">Like</p>
         </a>
-
+        <a href="@Url.Action("Buy", new {
+             TransactionId = ViewBag.newTransactionId,
+             SellerId = Model.UserId,
+             BuyerId = Session["UserID"],
+             ItemId = item_id,
+             Price = Model.ListingPrice,
+             Date = DateTime.Now,
+             Status = 0
+        })">
+            <p class="btn btn-outline-dark">Buy</p>
+        </a>
         <div>
             <p class="btn btn-outline-dark" onclick="window.history.back()">Back</p>
         </div>

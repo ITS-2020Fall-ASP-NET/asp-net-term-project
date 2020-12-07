@@ -24,6 +24,7 @@ namespace NeighTrader.Controllers
         {
             ViewBag.ShowAlreadyLikedModal = ShowAlreadyLikedModal;
             ViewBag.newLikeId = GetNewLikeId();
+            ViewBag.newTransactionId = GetNewTransactionId();
             Item item = db.Items.Find(item_id);
             return View(item);
         }
@@ -46,18 +47,31 @@ namespace NeighTrader.Controllers
             }
             return RedirectToAction("Detail", "ItemDetail", new { item_id = like.ItemId, ShowAlreadyLikedModal = true });
         }
-       
+
+        public ActionResult Buy([Bind(Include = "TransactionId,SellerId,BuyerId,ItemId,Price,Date,Status")] Transaction transaction)
+        {
+               db.Transactions.Add(transaction);
+                db.SaveChanges();
+            return RedirectToAction("UserTransactions", "Transactions", new { id=transaction.BuyerId});
+        }
+
+
         private int GetNewLikeId()
         {
             return db.Likes.Count() + 1;
         }
+
+        private int GetNewTransactionId()
+        {
+            return db.Transactions.Count() + 1;
+        }
+
         private bool IsAlreadyLiked(int user_id, int item_id)
         {
             var query = db.Likes.Where(l => (l.UserId == user_id && l.ItemId == item_id));
             return query.Count() != 0;
 
         }
-
 
         // GET: Category-Items
         public ActionResult CategoryItems(int category_id)
