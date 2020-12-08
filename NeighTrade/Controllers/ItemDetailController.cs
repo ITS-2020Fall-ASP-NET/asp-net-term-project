@@ -29,8 +29,12 @@ namespace NeighTrader.Controllers
             return View(item);
         }
 
-        public ActionResult Like([Bind(Include = "LikeId,UserId,ItemId")] Like like)
+        public ActionResult Like([Bind(Include = "UserId,ItemId")] Like like)
         {
+            if (Session["UserId"] == null) {
+                return RedirectToAction("Index", "SignIn", new { nextAction = "Detail", nextController = "ItemDetail", item_id = like.ItemId });
+            }
+
             try
             {
                 if (ModelState.IsValid && !IsAlreadyLiked(like.UserId, like.ItemId))
@@ -39,13 +43,18 @@ namespace NeighTrader.Controllers
                     item.LikeCount = item.LikeCount + 1;
                     db.Likes.Add(like);
                     db.SaveChanges();
-                    return RedirectToAction("Detail", "ItemDetail", new { item_id = like.ItemId, ShowAlreadyLikedModal = false });
+
+                    return Json(new { success = true, responseText = "success" }, JsonRequestBehavior.AllowGet);
                 }
-            } catch (DbUpdateException e)
-            {
-                return RedirectToAction("Detail", "ItemDetail", new { item_id = like.ItemId, ShowAlreadyLikedModal = true });
             }
-            return RedirectToAction("Detail", "ItemDetail", new { item_id = like.ItemId, ShowAlreadyLikedModal = true });
+            catch (DbUpdateException e)
+            {
+                Response.StatusCode = (int)HttpStatusCode.BadRequest;
+                return Json(new { success = false, responseText = "fail" }, JsonRequestBehavior.AllowGet);
+            }
+            
+            Response.StatusCode = (int)HttpStatusCode.BadRequest;
+            return Json(new { success = false, responseText = "fail" }, JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult Buy([Bind(Include = "TransactionId,SellerId,BuyerId,ItemId,Price,Date,Status")] Transaction transaction)
