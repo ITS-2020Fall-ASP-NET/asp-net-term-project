@@ -41,7 +41,7 @@ namespace NeighTrade.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Delivery()
         {
-            ViewBag.showDelivery = true;
+            
             return RedirectToAction("UserTransactions", new { id = Session["UserID"] });
         }
 

@@ -15,5 +15,9 @@ namespace NeighTrade.Models
         public Nullable<decimal> Price { get; set; }
         public Nullable<System.DateTime> Date { get; set; }
         public Nullable<int> Status { get; set; }
+        public String toString()
+        {
+            return Date.ToString();
+        }
     }
 }

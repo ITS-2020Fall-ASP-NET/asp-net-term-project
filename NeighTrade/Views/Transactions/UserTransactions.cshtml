@@ -18,7 +18,12 @@
                 autohide: true,
                 showAnim: "slideDown"
             });
-            $('.text-box').val(" ");
+            $("input.datepicker").val(" ");
+            $(".datePickerBtn").on("click", function (e) {
+                e.preventDefault();
+                var date = $(this)[0].parentElement.parentElement.parentElement.firstElementChild.firstElementChild.firstElementChild.value;
+                alert("Your pickup date is: " + date);
+            });
         });
     </script>
 }
@@ -59,20 +64,20 @@
                 @Html.ActionLink("Cancel", "Delete", new { id = item.TransactionId })
             </td>
             <td>
-                @using (Html.BeginForm("Delivery", "Transactions", FormMethod.Post))
+                @using (Html.BeginForm())
                 {
                     @Html.AntiForgeryToken()
                     <div class="form-horizontal">
                         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                         <div class="form-group">
                             <div class="col-md-10">
-                                @Html.EditorFor(model => item.Date, new { htmlAttributes = new { @class = "form-control datepicker", @id=item.Date} })
+                                @Html.EditorFor(model => item.Date, new { htmlAttributes = new { @class = "form-control datepicker", @id = item.Date } })
                                 @Html.ValidationMessageFor(model => item.Date, "", new { @class = "text-danger" })
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="col-md-offset-2 col-md-10">
-                                <input type="submit" value="Confirm" class="btn btn-primary" />
+                                <input type="submit" value="Confirm" class="btn btn-primary datePickerBtn"/>
                             </div>
                         </div>
                     </div>
