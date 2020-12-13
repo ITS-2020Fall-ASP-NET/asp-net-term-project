@@ -92,6 +92,14 @@ body {
 	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
 }
 
+.post-account-wrapper {
+	display: flex;
+}
+
+#post-ad-mobile {
+	display: none;
+}
+
 #nav-container {
 	justify-content: center;
 }
@@ -100,6 +108,7 @@ body {
 	width: 400px;
 	margin: 0;
 	border-radius: 0.25rem 0 0 0.25rem;
+	flex: 1;
 }
 
 #search-btn {
@@ -115,6 +124,48 @@ body {
 	border-radius: 20px;
 	width: 38px;
 }
+
+#account-btn-area {
+	position: relative;
+	margin-top: 50px;
+}
+
+#account-detail-btn {
+	font-size: 2rem;
+	border-radius: 60px;
+	width: 60px;
+}
+
+#account-inner {
+	width: 100%;
+	position: relative;
+}
+
+#account-info-area {
+	display: flex;
+	flex-direction: column;
+	text-align: center;
+	background: #FFFFFF;
+	border-radius: 5px;
+	border: 1px solid #EEEEEE;
+	width: 800px;
+	min-height: 600px;
+	margin: 30px auto;
+}
+
+#account-top {
+	position: absolute;
+	border-radius: 5px 5px 0 0;
+	width: 100%;
+	left: 0;
+	height: 80px;
+	background: navy;
+}
+
+#account-detail-info {
+	margin-top: 20px;
+}
+
 /*
 	Home
 */
@@ -129,11 +180,11 @@ body {
 .home-main-section {
 	height: 640px;
 	margin: 0 auto;
-
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	background-color: #ffffff;
+	flex-wrap: wrap;
 }
 
 .home-main-content {
@@ -154,6 +205,7 @@ body {
 
 .home-second-section {
 	display: flex;
+	flex-wrap: wrap;
 	align-items: center;
 	justify-content: center;
 	height: 640px;
@@ -495,4 +547,209 @@ footer {
 	width: 728px;
 	border-radius: 5px;
 	margin: 10px 0;
+}
+
+/*
+	Edit user
+*/
+.edit-user-container {
+	text-align: center;
+	background: #FFFFFF;
+	border-radius: 5px;
+	border: 1px solid #EEEEEE;
+	width: 800px;
+	min-height: 600px;
+	margin: 30px auto;
+	padding: 35px;
+}
+
+.edit-btn {
+	color: white;
+}
+
+
+@media only screen and (max-width: 1024px) {
+	#logo-text {
+		display: none;
+	}
+
+	#search-box {
+		width: 120px;
+	}
+
+	#logo {
+		margin-right: 0;
+	}
+
+	#nav-container {
+		justify-content: space-between;
+		padding: 5px 5px 0 5px;
+	}
+
+	.home-main-title {
+		font-size: 2rem;
+		margin-bottom: 0;
+	}
+
+	.home-main-section {
+		height: unset;
+	}
+
+	.home-main-section .home-main-title {
+		font-size: 2rem;
+		margin-bottom: 0;
+	}
+
+	.home-bottom-title {
+		font-size: 2rem;
+		margin-bottom: 0;
+	}
+
+	.container {
+		padding: 0;
+	}
+
+	.text-m {
+		font-size: 1.2rem;
+	}
+
+	.account-area {
+		margin-left: 10px;
+	}
+
+	.home-main-image-top {
+		position: unset;
+		margin: 20px 0;
+	}
+
+	.footer-container {
+		width: unset;
+	}
+
+	#search-btn {
+		width: unset;
+	}
+
+	#post-ad {
+		display: none;
+	}
+
+	#post-ad-mobile {
+		display: inline;
+	}
+
+	.navbar {
+		padding: 0;
+	}
+
+	.form-inline {
+		order: 3;
+		flex: 0 1 100%;
+	}
+
+	.fixed-top {
+		right: unset;
+		position: fixed;
+	}
+
+	.home-main-top {
+		width: unset;
+		height: unset;
+	}
+
+	.home-second-section {
+		height: unset;
+	}
+
+	.home-section, .home-main-section, .home-second-section {
+		padding: 10px;
+	}
+
+	.home-main-image-middle {
+		width: 100%;
+		height: 120px;
+		margin: 20px 0;
+	}
+
+	.home-main-image-bottom {
+		width: 100%;
+		height: 220px;
+		margin: 0;
+		background-size: 300px;
+	}
+
+	.home-main-image-top {
+		width: unset;
+	}
+
+	.home-main-desc {
+		width: unset;
+	}
+
+	.home-main-title {
+		padding-top: 0;
+	}
+
+	.footer-top {
+		display: block;
+	}
+
+	.popular-items-container {
+		width: unset;
+
+		margin: 0;
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+	}
+
+	.item-detail-container {
+		width: unset;
+		margin: 0;
+	}
+
+	.item-card {
+		border: 1px solid #eee;
+		border-radius: 4px;
+		margin: 10px;
+		padding: 10px;
+		width: 320px;
+	}
+
+	.article-sub-info {
+		right: 10px;
+		bottom: 10px;
+	}
+
+	.post-ad-container, .edit-user-container {
+		margin: 0;
+		padding: 10px;
+		width: unset;
+	}
+
+	#article-image-area {
+		width: 100%;
+	}
+
+	#article-image-area img {
+		width: 100%;
+	}
+
+	#article-description {
+		width: unset;
+	}
+
+	.dropdown-menu {
+		right: -5px;
+		top: 50px;
+		left: unset;
+	}
+
+	.button-post-ad {
+		margin-left: 10px;
+	}
+
+	footer {
+		padding: 10px;
+	}
 }

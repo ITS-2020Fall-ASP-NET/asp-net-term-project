@@ -24,41 +24,13 @@
     <header>
         <nav class="navbar fixed-top navbar-light">
             <div class="container" id="nav-container">
-                <!--div id="sidebar_show_or_hide_btn">
-                    @{
-                        PageData["Title"] = "Passing Data";
-                        PageData["ShowList"] = true;
-
-                        if (IsPost)
-                        {
-                            if (Request.Form["list"] == "off")
-                            {
-                                PageData["ShowList"] = false;
-                            }
-                        }
-                    }
-                    @if (PageData["ShowList"] == true)
-                    {
-                        <form method="post" action="">
-                            <input class="navbar-toggler-icon" type="hidden" name="list" value="off" className="glyphicon glyphicon-plus"/>
-                            <input class="navbar-toggler-icon" type="submit" value=" " className="glyphicon glyphicon-plus" />
-                         </form>
-                    }
-                    else
-                    {
-                        <form method="post" action="">
-                            <input class="navbar-toggler-icon" type="hidden" name="list" value="on" />
-                            <input class="navbar-toggler-icon" type="submit" value=" " />
-                        </form>
-                    }
-                </div-->
 
                 <a class="navbar-brand" id="logo" href="/Home/Index" style="display:flex;">
                     <div class="logo"></div>
-                    NeighTrade
+                    <span>NeighTrade</span>
                 </a>
-                <form class="form-inline my-5 my-lg-0">
-                    <input id="search-box" class="form-control" type="search" placeholder="Try with address or item name!" aria-label="Search">
+                <form class="form-inline" action="/search">
+                    <input id="search-box" class="form-control" type="search" placeholder="Try with address or item name!" aria-label="Search" name="searchText">
                     <button id="search-btn" class="btn btn-secondary my-2 my-sm-0" type="submit">
                         <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-search" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd" d="M10.442 10.442a1 1 0 0 1 1.415 0l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1 1 0 0 1 0-1.415z" />
@@ -67,30 +39,35 @@
                     </button>
                 </form>
 
-                <span class="button-post-ad">
-                    <a class="btn btn-dark" href="/PostAd/Index">Post Ad</a>
-                </span>
+                <div class="post-account-wrapper">
+                    <span class="button-post-ad">
+                        <a class="btn btn-dark" href="/PostAd/Index">
+                            <span id="post-ad">Post Ad</span>
+                            <span id="post-ad-mobile">Post</span>
+                        </a>
+                    </span>
 
-                <div class="account-area">
-                    @if (Session["UserName"] != null) {
-                        <div class="btn-group">
-                            <button type="button" id="account-btn" class="btn btn-outline-success" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                @Session["UserName"].ToString()[0]
-                            </button>
-                            <div class="dropdown-menu">
-                                <a class="dropdown-item" href="/Users/Details/@Session["UserId"]">My Account</a>
-                                <a class="dropdown-item" href="/Likes/UserItems/@Session["UserId"]">My Items</a>
-                                <a class="dropdown-item" href="/Likes/UserLikes/@Session["UserId"]">My Liked Items</a>
-                                <a class="dropdown-item" href="/Transactions/UserTransactions/@Session["UserId"]">My Orders</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="/SignIn/SignOut">Sign Out</a>
+                    <div class="account-area">
+                        @if (Session["UserName"] != null) {
+                            <div class="btn-group">
+                                <button type="button" id="account-btn" class="btn btn-outline-success" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    @Session["UserName"].ToString()[0]
+                                </button>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="/Users/Details/@Session["UserId"]">My Account</a>
+                                    <a class="dropdown-item" href="/Likes/UserItems/@Session["UserId"]">My Items</a>
+                                    <a class="dropdown-item" href="/Likes/UserLikes/@Session["UserId"]">My Liked Items</a>
+                                    <a class="dropdown-item" href="/Transactions/UserTransactions/@Session["UserId"]">My Orders</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="/SignIn/SignOut">Sign Out</a>
+                                </div>
                             </div>
-                        </div>
-                    } else {
-                        <span class="button-sign-in">
-                            <a class="btn btn-outline-info" href="/SignIn/Index">Sign In</a>
-                        </span>
-                    }
+                        } else {
+                            <span class="button-sign-in">
+                                <a class="btn btn-outline-info" href="/SignIn/Index">Sign In</a>
+                            </span>
+                        }
+                    </div>
                 </div>
             </div>
         </nav>
@@ -102,18 +79,18 @@
         <div class="footer-container">
             <div class="footer-top">
                 <ul class="footer-list">
-                    <li class="footer-list-item"><a class="link-highlight" href="#">Footer Link</a></li>
-                    <li class="footer-list-item"><a class="link-highlight" href="#">Footer Link</a></li>
-                    <li class="footer-list-item"><a class="link-highlight" href="#">Footer Link</a></li>
+                    <li class="footer-list-item"><a class="link-highlight" href="#">About</a></li>
+                    <li class="footer-list-item"><a class="link-highlight" href="#">Careers</a></li>
+                    <li class="footer-list-item"><a class="link-highlight" href="#">Terms of Use</a></li>
                 </ul>
                 <ul class="footer-list">
-                    <li class="footer-list-item"><a href="#">Footer Link</a></li>
-                    <li class="footer-list-item"><a href="#">Footer Link</a></li>
-                    <li class="footer-list-item"><a href="#">Footer Link</a></li>
+                    <li class="footer-list-item"><a href="#">Privacy Policy</a></li>
+                    <li class="footer-list-item"><a href="#">Posting Policy</a></li>
+                    <li class="footer-list-item"><a href="#">Help Desk</a></li>
                 </ul>
                 <ul class="footer-list">
                     <li class="footer-list-item"><a href="#">Support</a></li>
-                    <li class="footer-list-item"><a href="#">Help Desk</a></li>
+                    <li class="footer-list-item"><a href="#">Advertise on NeighTrade</a></li>
                     <li class="footer-list-item"><a href="#">Terms of Use</a></li>
                 </ul>
             </div>

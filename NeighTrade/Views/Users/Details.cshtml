@@ -4,63 +4,45 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<div id="account-info-area">
+    <div id="account-inner">
+        <div id="account-top"></div>
 
-<div>
-    <h4>User</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Email)
-        </dt>
+        <div id="account-btn-area">
+            @if (Session["UserName"] != null) {
+                <button type="button" id="account-detail-btn" class="btn btn-success" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    @Session["UserName"].ToString()[0]
+                </button>
+            }
+        </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.Email)
-        </dd>
+        <div id="account-detail-info">
+            <dl class="dl-horizontal">
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Password)
-        </dt>
+                <dt>
+                    @Html.DisplayFor(model => model.Fname)
+                    @Html.DisplayFor(model => model.Lname)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Password)
-        </dd>
+                <dt>
+                    @Html.DisplayFor(model => model.Email)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Fname)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Address.Address1)
+                    @Html.DisplayFor(model => model.Address.Address2)
+                    @Html.DisplayFor(model => model.Address.Address3),
+                    @Html.DisplayFor(model => model.Address.State),
+                    @Html.DisplayFor(model => model.Address.City),
+                    @Html.DisplayFor(model => model.Address.PostalCode)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Fname)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Lname)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Lname)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Reputation)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Reputation)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.AddressId)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.AddressId)
-        </dd>
-
-    </dl>
+            </dl>
+        </div>
+        <p>
+            <div class="btn btn-success">
+                @Html.ActionLink("Edit Profile", "Edit", new { id = Model.UserId }, new { @class = "edit-btn" })
+            </div>
+        </p>
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.UserId }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>

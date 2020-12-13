@@ -47,13 +47,22 @@ namespace NeighTrade.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "UserId,Email,Password,Fname,Lname,Reputation,AddressId")] User user)
+        public ActionResult Create([Bind(Include = "UserId,Email,Password,Fname,Lname,Reputation,AddressId")] User user,
+            [Bind(Include = "Address1,Address2,Address3,City,State,PostalCode,Country")] Address address)
         {
             if (ModelState.IsValid)
             {
+                var savedAddress = db.Addresses.Add(address);
+                user.AddressId = savedAddress.AddressId;
                 db.Users.Add(user);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+
+
+                ActionResult result = View("Index");
+                Session["UserID"] = user.UserId;
+                Session["UserEmail"] = user.Email.ToString();
+                Session["UserName"] = user.Fname.ToString();
+                return RedirectToAction("Index", "Home");
             }
 
             return View(user);
@@ -79,14 +88,27 @@ namespace NeighTrade.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "UserId,Email,Password,Fname,Lname,Reputation,AddressId")] User user)
+        public ActionResult Edit([Bind(Include = "UserId,Email,Password,Fname,Lname,Reputation,AddressId")] User user,
+            [Bind(Include = "Address1, Address2, Address3, City, State, PostalCode, Country")] Address address)
         {
             if (ModelState.IsValid)
             {
+                var oldAddress = db.Addresses.Find(user.AddressId);
+                oldAddress.Address1 = address.Address1;
+                oldAddress.Address2 = address.Address2;
+                oldAddress.Address3 = address.Address3;
+                oldAddress.City = address.City;
+                oldAddress.State = address.State;
+                oldAddress.PostalCode = address.PostalCode;
+                oldAddress.Country = address.Country;
+
                 db.Entry(user).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+
+                //return RedirectToAction("Index");
+                return RedirectToAction("Details", "Users", new { id = user.UserId });
             }
+
             return View(user);
         }
 

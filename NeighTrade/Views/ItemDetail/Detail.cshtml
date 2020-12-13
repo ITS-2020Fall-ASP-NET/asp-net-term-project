@@ -6,7 +6,7 @@
     var item = Model;
 }
 
-<article class="item-detail-container">
+<div class="item-detail-container">
     <section id="article-image-area">
         <img src="~/Content/img/item/@item.ImgPath" alt="Image" />
     </section>
@@ -59,19 +59,9 @@
         })">
             <p class="btn btn-outline-dark">Buy</p>
         </a>
-
-        <p>
-            <span id="like-badge" class="badge badge-pill badge-secondary">@Html.DisplayFor(model => model.LikeCount)</span>
-            people liked this item
-        </p>
-
-        <p class="btn btn-outline-dark" onclick="likeClicked();">Like</p>
-        <div>
-            <p class="btn btn-outline-dark" onclick="window.history.back()">Back</p>
-        </div>
     </section>
 
-</article>
+</div>
 
 @section scripts {
     <script type="text/javascript">
@@ -93,8 +83,6 @@
                 },
                 error: function (ex) {
                     console.log(ex);
-                    //alert('You already liked this item');
-                    //console.log(ex);
                 }
             });
         }

@@ -19,13 +19,12 @@ namespace NeighTrade.Controllers
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult SignIn(User objUser) {
+        public ActionResult SignIn(String Email, String Password) {
             ActionResult result = View("Index");
 
             if (ModelState.IsValid) {
                 using (NeighTradeContext db = new NeighTradeContext()) {
-                    var obj = db.Users.Where(a => a.Email.Equals(objUser.Email) && a.Password.Equals(objUser.Password)).FirstOrDefault();
+                    var obj = db.Users.Where(a => a.Email.Equals(Email) && a.Password.Equals(Password)).FirstOrDefault();
                     if (obj != null) {
                         Session["UserID"] = obj.UserId;
                         Session["UserEmail"] = obj.Email.ToString();

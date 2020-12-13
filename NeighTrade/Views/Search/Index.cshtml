@@ -1,0 +1,39 @@
+﻿@model IEnumerable<NeighTrade.Models.Item>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="popular-items-container">
+
+    <h4>Search result</h4>
+
+    @foreach (var item in Model) {
+        <article class="item-card">
+            <a class="article-link" href="/ItemDetail/Detail?item_id=@item.ItemId&ShowAlreadyLikedModal=False">
+                <div class="card-photo" style="background: url('/Content/img/item/@item.ImgPath');background-size: cover;"></div>
+
+                <div class="article-info">
+                    <div class="article-title-content">
+                        <span class="article-title">@item.Name</span>
+                    </div>
+
+                    <p class="article-region-name">
+                        @item.User.Address.City
+                    </p>
+                    <p class="article-price ">
+                        $@item.ListingPrice
+                    </p>
+                    <section class="article-sub-info">
+                        <span class="article-watch">
+                            <img class="watch-icon" alt="Watch count" src="https://d1unjqcospf8gs.cloudfront.net/assets/home/base/like-8111aa74d4b1045d7d5943a901896992574dd94c090cef92c26ae53e8da58260.svg">
+                            @item.LikeCount
+                        </span>
+                    </section>
+                </div>
+            </a>
+        </article>
+    }
+</div>
+
