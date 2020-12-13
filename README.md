@@ -8,14 +8,36 @@ So it should support a more specific address-based search.
 Kijiji’s minimum address unit is ‘City’ (i.e. Toronto, Mississauga, Oakville), but we can support the search where users can set the current location and find the result from the closest.  
 In addition to it, add some useful features to provide users with better transaction experience.
 
+# Development environment
+* ASP.NET MVC
+* Entity Framework 6
+* Database
+  * MySQL
+
+# How to run
+1. Open ITS2020_ASPNET_Team_Prj.sln file in Visual Studio
+2. Run
+3. Open localhost:44392 in your browser
+4. (Optional) Set database connection if necessary
+```
+  <connectionStrings>
+    <add name="NeighTradeContext" connectionString="Data Source=(LocalDb)\MSSQLLocalDB;Initial Catalog=NeighTrade;Integrated Security=SSPI;" providerName="System.Data.SqlClient" />
+  </connectionStrings>
+```
+5. Pre-defined user information
+    * id : hansol.jo@gmail.com, password : 12341234
+    * id : sarachen0712@gmail.com, password : 12341234
+
+
 # Features
-Name | Desc. | Tier  | Assignee
------|------|:-----:|:--------|
-Main page | includes a search box (search by address / item name) | 2 | Hansol
-Item list | items on sale based on item name, location | 2 | Hansol
-Item detail | Detailed information about selling items / ‘Interest’ button<br>Users can express an ‘interest’ for an item<br>Marked items can be managed in my account page<br>‘Chat’ indicator<br>Number of current active conversations<br>Shows how many users are trying to get the item<br>Seller information panel<br>includes seller’s reputation indicator<br>Related items | 2 | Sara
-Post ad | User should input the detailed item information<br>Picture upload<br>Form validation|2|Hansol
-My Account|User account page<br>Transaction history<br>User can leave a review score of sellers for any previous transactions|1|Hansol
-Sign in / up|Input validation<br>Address form|1|Hansol
-Manage My Ads|List of my current / post ad histories|1|Sara
-Book a delivery|Seller / buyer should agree to use this service.<br>Calendar view for date picking.|3|Sara
+Name | Desc. | Tier  | Assignee | Status
+-----|------|:-----:|:---------:|:-------|
+Main Page | includes a search box (search by address / item name) | 2 | Hansol Jo | Done
+Item list | Items on sale<br>From the ‘popular items’ menu or search | 3 | Hansol | Done
+Item detail | Detailed information about selling items | 2 | Sara Chen | Done
+Post ad | Users should input the detailed item information<br>Picture upload | 2 | Hansol Jo | Done
+My Account | User account page | 1 | Hansol Jo | Done
+Sign in / up | Input validation<br>Address form | 1 | Hansol | Done
+Manage My Ads | List of my current / post ad histories | 1 | Sara Chen | Done
+My Likes | List of items that I expressed the interest | 1 | Sara Chen | Done
+My Orders | List of the current user’s previous orders<br>Calendar view for delivery date picking | 3 | Sara Chen | Done
