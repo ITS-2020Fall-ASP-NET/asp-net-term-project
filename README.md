@@ -11,8 +11,6 @@ In addition to it, add some useful features to provide users with better transac
 # Development environment
 * ASP.NET MVC
 * Entity Framework 6
-* Database
-  * MySQL
 
 # How to run
 1. Open ITS2020_ASPNET_Team_Prj.sln file in Visual Studio
