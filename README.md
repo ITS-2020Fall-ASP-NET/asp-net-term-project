@@ -12,11 +12,10 @@ In addition to it, add some useful features to provide users with better transac
 Name | Desc. | Tier  | Assignee
 -----|------|:-----:|:--------|
 Main page | includes a search box (search by address / item name) | 2 | Hansol
-Item list | items on sale based on current location / filter menu (advanced search) | 3 | Hansol
+Item list | items on sale based on item name, location | 2 | Hansol
 Item detail | Detailed information about selling items / ‘Interest’ button<br>Users can express an ‘interest’ for an item<br>Marked items can be managed in my account page<br>‘Chat’ indicator<br>Number of current active conversations<br>Shows how many users are trying to get the item<br>Seller information panel<br>includes seller’s reputation indicator<br>Related items | 2 | Sara
-Post ad | User should input the detailed item information<br>Picture upload<br>Form validation|2|George
-Chat|Seller / buyer messenger function|3|Sara
-My Account|User account page<br>Transaction history<br>User can leave a review score of sellers for any previous transactions|1|George
+Post ad | User should input the detailed item information<br>Picture upload<br>Form validation|2|Hansol
+My Account|User account page<br>Transaction history<br>User can leave a review score of sellers for any previous transactions|1|Hansol
 Sign in / up|Input validation<br>Address form|1|Hansol
 Manage My Ads|List of my current / post ad histories|1|Sara
-Book a delivery|Seller / buyer should agree to use this service.<br>Calendar view for date picking.|3|George
+Book a delivery|Seller / buyer should agree to use this service.<br>Calendar view for date picking.|3|Sara
