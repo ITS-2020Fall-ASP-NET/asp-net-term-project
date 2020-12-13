@@ -569,6 +569,10 @@ footer {
 
 
 @media only screen and (max-width: 1024px) {
+	body {
+		padding-top : 100px;
+	}
+
 	#logo-text {
 		display: none;
 	}
@@ -705,7 +709,7 @@ footer {
 
 	.item-detail-container {
 		width: unset;
-		margin: 0;
+		margin: 40px 0;
 	}
 
 	.item-card {
