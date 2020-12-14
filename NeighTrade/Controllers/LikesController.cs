@@ -143,7 +143,7 @@ namespace NeighTrade.Controllers
             Like like = db.Likes.Find(id);
             db.Likes.Remove(like);
             db.SaveChanges();
-            return RedirectToAction("Details", "Users", new { id = Session["UserID"] });
+            return RedirectToAction("UserLikes", "Likes", new { id = Session["UserID"] });
         }
 
         protected override void Dispose(bool disposing)

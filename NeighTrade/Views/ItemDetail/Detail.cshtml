@@ -64,27 +64,8 @@
 </div>
 
 @section scripts {
-    <script type="text/javascript">
-        function likeClicked() {
-            var d = {
-                UserId: @Model.UserId,
-                ItemId: @Model.ItemId
-            };
-
-            console.log(d);
-            $.ajax({
-                type: 'POST',
-                url: '@Url.Action("Like")',
-                dataType: 'json',
-                data: d,
-                success: function (data) {
-                    console.log(data);
-                    $("#like-badge").text(@Model.LikeCount + 1);
-                },
-                error: function (ex) {
-                    console.log(ex);
-                }
-            });
-        }
+    <script>
+        var ShowAlreadyLikedModal = @Html.Raw(Json.Encode(ViewBag.ShowAlreadyLikedModal));
+        if (ShowAlreadyLikedModal == true) alert('You already liked this item');
     </script>
 }

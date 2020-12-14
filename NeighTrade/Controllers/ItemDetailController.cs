@@ -29,7 +29,7 @@ namespace NeighTrader.Controllers
             return View(item);
         }
 
-        public ActionResult Like([Bind(Include = "UserId,ItemId")] Like like)
+        public ActionResult Like([Bind(Include = "LikeId,UserId,ItemId")] Like like)
         {
             if (Session["UserId"] == null) {
                 return RedirectToAction("Index", "SignIn", new { nextAction = "Detail", nextController = "ItemDetail", item_id = like.ItemId });
@@ -44,7 +44,7 @@ namespace NeighTrader.Controllers
                     db.Likes.Add(like);
                     db.SaveChanges();
 
-                    return Json(new { success = true, responseText = "success" }, JsonRequestBehavior.AllowGet);
+                    return RedirectToAction("Detail", "ItemDetail", new { item_id = like.ItemId, ShowAlreadyLikedModal = false });
                 }
             }
             catch (DbUpdateException e)
@@ -52,9 +52,8 @@ namespace NeighTrader.Controllers
                 Response.StatusCode = (int)HttpStatusCode.BadRequest;
                 return Json(new { success = false, responseText = "fail" }, JsonRequestBehavior.AllowGet);
             }
-            
-            Response.StatusCode = (int)HttpStatusCode.BadRequest;
-            return Json(new { success = false, responseText = "fail" }, JsonRequestBehavior.AllowGet);
+
+            return RedirectToAction("Detail", "ItemDetail", new { item_id = like.ItemId, ShowAlreadyLikedModal = true });
         }
 
         public ActionResult Buy([Bind(Include = "TransactionId,SellerId,BuyerId,ItemId,Price,Date,Status")] Transaction transaction)
